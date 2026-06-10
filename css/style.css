@@ -68,7 +68,9 @@ a:hover { color: var(--accent-hover); }
 
 /* header */
 .intro {
-  margin-bottom: 2.5rem;
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--line);
 }
 
 .site-title {
@@ -77,14 +79,15 @@ a:hover { color: var(--accent-hover); }
   font-weight: 600;
   letter-spacing: -0.03em;
   line-height: 1.15;
-  margin: 0 0 0.5rem;
+  margin: 0 0 0.625rem;
 }
 
-.tagline {
+.bio {
   font-size: 1.0625rem;
   color: var(--muted);
   margin: 0;
-  max-width: 34rem;
+  max-width: 32rem;
+  line-height: 1.55;
 }
 
 /* layout */
