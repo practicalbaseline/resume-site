@@ -10,17 +10,12 @@
 </head>
 <body>
 
-<div class="layout">
+  <!-- Ultra-minimal name (whisper-quiet, low-noise; first visible content must be the pillars) -->
+  <h1 class="name">Jakob Gray</h1>
 
-<main class="page">
-
-  <header class="intro">
-    <h1 class="site-title">Jakob Gray</h1>
-    <p class="location">Based in ☀️ Phoenix, Arizona.</p>
-  </header>
-
-  <section class="section section-projects">
-    <h2>Projects for 2026</h2>
+  <!-- 1. Projects (primary / first signal) -->
+  <section class="projects">
+    <h2>Projects</h2>
     <ul class="items">
       <li>
         <span class="item-name"><a href="https://dfsim.vercel.app/">Competitive Dry-Fire Trainer</a></span>
@@ -33,34 +28,57 @@
     </ul>
   </section>
 
-  <section class="section">
-    <h2>Subscribe</h2>
+  <!-- 2. Principles -->
+  <section class="principles">
+    <h2>Principles</h2>
+
+    <!-- Featured (the only historically present one, presented beautifully) -->
+    <blockquote class="quote">
+      Self-education is the only kind of education there is.
+      <cite>Asimov</cite>
+    </blockquote>
+
+    <!-- Supporting concise principles (thematic fit, plural) -->
+    <ul class="principles-list">
+      <li>Precision requires honest, immediate feedback.</li>
+      <li>Real understanding comes from taking things apart.</li>
+      <li>Fundamentals beat shortcuts.</li>
+    </ul>
+  </section>
+
+  <!-- 3. Books (reading + plan to read) -->
+  <section class="books">
+    <h2>Books</h2>
+
+    <div class="books-group">
+      <h3>Reading</h3>
+      <ul class="simple-list">
+        <li><em>I, Robot</em> — Asimov</li>
+      </ul>
+    </div>
+
+    <div class="books-group">
+      <h3>Planned</h3>
+      <ul class="simple-list">
+        <li><em>Foundation</em> — Asimov</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Light subscribe (secondary, after the signal; supports blog updates) -->
+  <section class="subscribe">
     <form
       action="https://buttondown.com/api/emails/embed-subscribe/jakeg95"
       method="post"
       class="subscribe-form"
     >
-      <label for="bd-email">Email</label>
+      <label for="bd-email">Updates</label>
       <div class="subscribe-row">
         <input type="email" name="email" id="bd-email" placeholder="you@example.com" required>
         <input type="submit" value="Subscribe">
       </div>
     </form>
   </section>
-
-</main>
-
-<aside class="sidebar">
-  <div class="cactus" aria-hidden="true">
-    <img src="images/cactus.jpg" alt="">
-  </div>
-  <section class="principles">
-    <h2>Principles</h2>
-    <p class="quote">Self-education is the only kind of education there is.<cite>Asimov</cite></p>
-  </section>
-</aside>
-
-</div>
 
 </body>
 </html>
