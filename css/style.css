@@ -1,293 +1,37 @@
-:root {
-  --bg: #0c0c0c;
-  --surface: #141414;
-  --text: #e8e6e3;
-  --text-dim: #8a8780;
-  --text-faint: #5a5854;
-  --accent: #c9a227;
-  --border: #222;
-  --font: "IBM Plex Sans", system-ui, sans-serif;
-  --font-serif: "Literata", Georgia, serif;
-  --font-mono: "IBM Plex Mono", monospace;
-}
-
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-html { -webkit-font-smoothing: antialiased; }
-
 body {
-  font-family: var(--font);
-  font-size: 0.9375rem;
-  line-height: 1.6;
-  color: var(--text);
-  background: var(--bg);
+  font: 15px/1.5 system-ui, sans-serif;
+  max-width: 40em;
+  margin: 2em auto;
+  padding: 0 1em;
+  color: #111;
 }
 
-a { color: var(--accent); text-decoration: none; }
-a:hover { text-decoration: underline; }
-
-/* ── Home layout ─────────────────────────────────────────────── */
-
-.page {
-  max-width: 56rem;
-  margin: 0 auto;
-  padding: 3rem 1.5rem 4rem;
-}
-
-.intro {
-  margin-bottom: 3rem;
-}
-
-.intro h1 {
-  font-family: var(--font-serif);
-  font-size: 1.5rem;
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  margin-bottom: 0.5rem;
-}
-
-.intro p {
-  color: var(--text-dim);
-  max-width: 32rem;
-}
+a { color: #00e; }
 
 .split {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 3rem;
-  margin-bottom: 3rem;
+  gap: 2em;
+  margin: 2em 0;
 }
 
-.col h2 {
-  font-family: var(--font-mono);
-  font-size: 0.6875rem;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--text-faint);
-  margin-bottom: 1.25rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 1px solid var(--border);
+@media (max-width: 500px) {
+  .split { grid-template-columns: 1fr; }
 }
 
-/* Projects list */
-.project-list {
-  list-style: none;
-}
-
-.project-list li {
-  padding: 0.625rem 0;
-  border-bottom: 1px solid var(--border);
-}
-
-.project-list li:last-child { border-bottom: none; }
-
-.project-list a {
-  color: var(--text);
-  font-weight: 500;
-}
-
-.project-list a:hover { color: var(--accent); }
-
-.project-list .desc {
-  display: block;
-  font-size: 0.8125rem;
-  color: var(--text-dim);
-  margin-top: 0.2rem;
-  font-weight: 400;
-}
-
-.project-list .pending {
-  color: var(--text-dim);
-  font-weight: 400;
-}
-
-/* Principles list */
-.principle-list {
-  list-style: none;
-}
-
-.principle-list li {
-  padding: 0.75rem 0;
-  border-bottom: 1px solid var(--border);
-}
-
-.principle-list li:last-child { border-bottom: none; }
-
-.principle-list blockquote {
-  font-family: var(--font-serif);
-  font-size: 0.875rem;
-  font-style: italic;
-  line-height: 1.55;
-  color: var(--text);
-}
-
-.principle-list cite {
-  display: block;
-  font-family: var(--font);
-  font-size: 0.75rem;
-  font-style: normal;
-  color: var(--text-faint);
-  margin-top: 0.375rem;
-}
-
-.principle-author {
-  font-size: 0.75rem;
-  color: var(--text-faint);
-  margin-bottom: 1rem;
-}
-
-/* Writing / blog */
-.writing h2 {
-  font-family: var(--font-mono);
-  font-size: 0.6875rem;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--text-faint);
-  margin-bottom: 1rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 1px solid var(--border);
-}
-
-.post-list {
-  list-style: none;
-}
-
-.post-list li {
-  padding: 0.5rem 0;
-}
-
-.post-list a {
-  color: var(--text);
-}
-
-.post-list a:hover { color: var(--accent); }
-
-.post-list .date {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  color: var(--text-faint);
-  margin-right: 0.75rem;
-}
-
-/* ── Blog post page ──────────────────────────────────────────── */
-
-.post-page {
-  max-width: 36rem;
-  margin: 0 auto;
-  padding: 3rem 1.5rem 4rem;
-}
-
-.post-back {
-  font-size: 0.8125rem;
-  color: var(--text-faint);
-  margin-bottom: 2rem;
-  display: inline-block;
-}
-
-.post-back:hover { color: var(--accent); }
-
-.post-page h1 {
-  font-family: var(--font-serif);
-  font-size: 1.75rem;
+h2 {
+  font-size: 1em;
   font-weight: 600;
-  line-height: 1.25;
-  letter-spacing: -0.02em;
-  margin-bottom: 0.5rem;
+  margin: 0 0 0.5em;
 }
 
-.post-meta {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  color: var(--text-faint);
-  margin-bottom: 2rem;
-}
+ul { margin: 0; padding-left: 1.2em; }
+li { margin: 0.4em 0; }
 
-.post-body h2 {
-  font-family: var(--font-serif);
-  font-size: 1.125rem;
-  font-weight: 600;
-  margin: 2rem 0 0.75rem;
-}
+.quote { margin: 0.6em 0; }
+.quote cite { font-size: 0.85em; color: #666; font-style: normal; }
 
-.post-body h3 {
-  font-size: 0.9375rem;
-  font-weight: 600;
-  margin: 1.5rem 0 0.5rem;
-}
-
-.post-body p {
-  color: var(--text-dim);
-  margin-bottom: 1rem;
-}
-
-.post-body ul,
-.post-body ol {
-  color: var(--text-dim);
-  margin: 0 0 1rem 1.25rem;
-}
-
-.post-body li { margin-bottom: 0.375rem; }
-
-.post-body code {
-  font-family: var(--font-mono);
-  font-size: 0.85em;
-  background: var(--surface);
-  padding: 0.1em 0.35em;
-  border-radius: 0.2rem;
-}
-
-.post-body pre {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 0.25rem;
-  padding: 1rem;
-  overflow-x: auto;
-  margin: 1rem 0;
-}
-
-.post-body pre code {
-  background: none;
-  padding: 0;
-  color: var(--text);
-  font-size: 0.8125rem;
-}
-
-.post-body blockquote {
-  border-left: 2px solid var(--accent);
-  padding-left: 1rem;
-  margin: 1.25rem 0;
-  font-family: var(--font-serif);
-  font-style: italic;
-  color: var(--text);
-}
-
-.post-body hr {
-  border: none;
-  border-top: 1px solid var(--border);
-  margin: 2rem 0;
-}
-
-.post-body strong { color: var(--text); font-weight: 600; }
-
-/* ── Footer ──────────────────────────────────────────────────── */
-
-footer {
-  max-width: 56rem;
-  margin: 0 auto;
-  padding: 0 1.5rem 2rem;
-  font-size: 0.75rem;
-  color: var(--text-faint);
-}
-
-/* ── Responsive ──────────────────────────────────────────────── */
-
-@media (max-width: 640px) {
-  .split {
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
-  }
-
-  .page { padding-top: 2rem; }
-}
+.post { max-width: 34em; }
+.post h1 { font-size: 1.25em; }
+.post h2 { font-size: 1em; margin-top: 1.5em; }
+.post pre { overflow-x: auto; font-size: 0.85em; }

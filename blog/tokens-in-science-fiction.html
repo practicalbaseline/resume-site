@@ -3,108 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Where Tokens Came From — Jakob</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&display=swap" rel="stylesheet">
+  <title>Where tokens came from</title>
   <link rel="stylesheet" href="../css/style.css">
 </head>
-<body>
-  <article class="post-page">
-    <a href="../index.html" class="post-back">← Back</a>
-    <h1>Where "Tokens" Came From: Asimov to Attention Mechanisms</h1>
-    <p class="post-meta">2026</p>
+<body class="post">
 
-    <div class="post-body">
-      <p>
-        When engineers talk about "tokens" in large language models, they mean discrete subword
-        units that models process sequentially. But the word carries centuries of meaning — as a
-        physical object exchanged for value, as a symbol standing in for something else, as a
-        unit of access or permission. Science fiction picked up this lineage long before neural
-        networks existed.
-      </p>
+<p><a href="../index.html">←</a></p>
 
-      <h2>The original meaning</h2>
+<h1>Where tokens came from</h1>
 
-      <p>
-        A token is a tangible object that <em>represents</em> something intangible. Roman soldiers
-        carried <em>tesserae</em> as proof of identity. Medieval merchants used trade tokens when
-        coinage ran short. In NLP, "understanding" might become <code>["under", "stand", "ing"]</code>
-        — the model never sees the word; it sees the tokens.
-      </p>
+<p>A token is a stand-in for something else. Roman <em>tesserae</em>, trade tokens, ration chits — always a symbol, never the thing itself. NLP tokens work the same way: the model never sees "understanding", it sees <code>["under","stand","ing"]</code>.</p>
 
-      <h2>Tokens in Asimov's universe</h2>
+<h2>Asimov</h2>
+<p>The Three Laws are 60 words hardwired into every robot brain — constraints, not descriptions of intelligence. That's a system prompt, written in 1942.</p>
+<p>In <em>The Last Question</em>, Multivac's answer across eons: <em>INSUFFICIENT DATA FOR MEANINGFUL ANSWER.</em> A context window problem.</p>
 
-      <p>
-        Asimov never used "token" in the modern ML sense, but his work is saturated with discrete
-        symbolic units that carry meaning, grant access, or encode rules.
-      </p>
+<h2>Then computing</h2>
+<ul>
+  <li>Shannon — messages as discrete symbols</li>
+  <li>1990s NLP — word tokenization</li>
+  <li>2016 — BPE subword tokenization</li>
+  <li>2017 — Transformers + attention over token sequences</li>
+  <li>2020s — token as billing unit</li>
+</ul>
 
-      <h3>The Three Laws as tokens of ethics</h3>
+<p>Tokens are stand-ins. They grant access to a finite context window. They encode rules. Sometimes "insufficient data" is the right answer.</p>
 
-      <p>
-        Sixty words — a fixed set of rules hardwired into every positronic brain. They don't
-        describe intelligence; they <em>constrain</em> it.
-      </p>
+<p><a href="token-management.html">Token management →</a></p>
 
-      <blockquote>
-        A robot may not injure a human being or, through inaction, allow a human being to come to harm.
-      </blockquote>
-
-      <p>
-        Modern system prompts work the same way: fixed rules prepended to every request.
-        Asimov wrote the first system prompt in 1942.
-      </p>
-
-      <h3>Multivac and insufficient data</h3>
-
-      <p>
-        In <em>The Last Question</em> (1956), successive supercomputers answer humanity's query
-        across eons:
-      </p>
-
-      <blockquote>INSUFFICIENT DATA FOR MEANINGFUL ANSWER.</blockquote>
-
-      <p>
-        A token budget problem avant la lettre. The question demands more than any finite
-        context window can hold.
-      </p>
-
-      <h3>Foundation's symbolic access</h3>
-
-      <p>
-        The Encyclopedia Galactica, the Prime Radiant, Hari Seldon's messages — all compress
-        complex reality into discrete units that can be stored, transmitted, and acted upon.
-      </p>
-
-      <h2>From fiction to formalism</h2>
-
-      <ol>
-        <li><strong>1950s–60s:</strong> Shannon's information theory — messages as discrete symbol sequences</li>
-        <li><strong>1990s:</strong> Statistical NLP tokenizes text for parsing and translation</li>
-        <li><strong>2016:</strong> BPE and SentencePiece popularize subword tokenization</li>
-        <li><strong>2017:</strong> Transformers process token sequences with self-attention</li>
-        <li><strong>2020s:</strong> "Token" becomes the billing unit and currency of the LLM economy</li>
-      </ol>
-
-      <h2>Why the metaphor matters</h2>
-
-      <ul>
-        <li><strong>Tokens are stand-ins, not the thing itself.</strong> The model processes tokens, not meaning.</li>
-        <li><strong>Tokens grant access.</strong> Your context window is a finite resource.</li>
-        <li><strong>Tokens encode rules.</strong> System prompts are Asimov's Three Laws.</li>
-        <li><strong>Insufficient data is a real answer.</strong> Sometimes the right response is to say you don't have enough context.</li>
-      </ul>
-
-      <hr>
-
-      <p>
-        Asimov imagined robots governed by sixty words of embedded ethics. We build language
-        models governed by system prompts, context windows, and token budgets. The vocabulary
-        changed; the problem didn't.
-        <a href="token-management.html">Token management best practices →</a>
-      </p>
-    </div>
-  </article>
 </body>
 </html>
