@@ -195,6 +195,15 @@ ul.items .item-detail {
   line-height: 1.45;
 }
 
+.item-name a {
+  color: var(--text);
+  font-weight: 500;
+}
+
+.item-name a:hover {
+  color: var(--accent);
+}
+
 .item-detail {
   font-size: 0.875rem;
   color: var(--muted);
