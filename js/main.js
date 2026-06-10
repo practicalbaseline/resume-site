@@ -1,21 +1,17 @@
-// Highlight active nav link based on current page
+// Highlight active nav link based on current page section
 (function () {
-  const path = window.location.pathname.replace(/\/$/, "") || "/";
-  const links = document.querySelectorAll(".site-nav a");
+  const path = window.location.pathname;
+  let section = "home";
 
-  links.forEach((link) => {
-    const href = link.getAttribute("href");
-    if (!href) return;
+  if (path.includes("/articles")) {
+    section = "articles";
+  } else if (path.includes("principles")) {
+    section = "principles";
+  } else if (path.includes("projects")) {
+    section = "projects";
+  }
 
-    const linkPath = href.replace(/\/$/, "") || "/";
-    const isHome = linkPath === "/" || linkPath === "/index.html";
-    const isCurrentHome = path === "/" || path.endsWith("/index.html");
-
-    if (
-      (isHome && isCurrentHome) ||
-      (!isHome && path.endsWith(linkPath))
-    ) {
-      link.classList.add("active");
-    }
+  document.querySelectorAll(`.site-nav a[data-nav="${section}"]`).forEach((link) => {
+    link.classList.add("active");
   });
 })();

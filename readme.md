@@ -21,13 +21,22 @@ Then visit `http://localhost:8000`.
 
 ## Deploy to GitHub Pages
 
+This site is **100% static** — no build step, no npm, no server. GitHub serves the files directly from the repo.
+
 1. Push this repo to GitHub
 2. Go to **Settings → Pages**
 3. Under **Source**, select **Deploy from a branch**
 4. Choose the `main` branch and `/ (root)` folder
 5. Click **Save**
 
-Your site will be live at `https://<username>.github.io/<repo-name>/` within a few minutes.
+Your site will be live within a few minutes at:
+
+| Repo type | URL |
+|-----------|-----|
+| Project site (any repo name) | `https://<username>.github.io/<repo-name>/` |
+| User site (repo named `<username>.github.io`) | `https://<username>.github.io/` |
+
+All links use **relative paths**, so the site works at either URL without configuration changes.
 
 ## Custom domain
 
