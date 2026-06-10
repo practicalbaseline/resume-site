@@ -165,7 +165,32 @@ h3 {
   list-style: none;
 }
 
-/* subscribe — deliberately secondary, after the three pillars */
+/* Writing (blog posts) — minimal, re-uses books/principles breathing + simple-list for aggressive simplicity */
+.writing {
+  margin-top: var(--gap);
+}
+
+.writing .simple-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+.writing .simple-list li {
+  margin: 0.35rem 0;
+}
+
+/* light date for the writing list items (small, faint, non-noise) */
+.writing .date {
+  font-size: 0.8em;
+  color: var(--faint);
+  margin-right: 0.35rem;
+}
+
+/* subscribe — deliberately secondary, after the signal (now including writing) */
 .subscribe {
   margin-top: calc(var(--gap) * 1.1);
 }
