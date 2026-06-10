@@ -1,29 +1,30 @@
 # itsjakegray.com
 
-Static personal site. Hosted on GitHub Pages at **https://www.itsjakegray.com**
+Static personal site → **https://www.itsjakegray.com**
+
+Repo: [github.com/practicalbaseline/resume-site](https://github.com/practicalbaseline/resume-site)
 
 ## Deploy
 
-1. Push this repo to GitHub
+1. Push to `practicalbaseline/resume-site`
 2. **Settings → Pages → Source:** `main` branch, `/ (root)`
 3. **Settings → Pages → Custom domain:** `www.itsjakegray.com`
-4. Wait for DNS check, then enable **Enforce HTTPS**
+4. Wait for DNS check → enable **Enforce HTTPS**
 
-## DNS (at your domain registrar)
+Until the custom domain is live, the site is also at:
+`https://practicalbaseline.github.io/resume-site/`
+
+## DNS (Cloudflare or your registrar)
 
 | Type | Name | Value |
 |------|------|-------|
-| CNAME | `www` | `<your-github-username>.github.io` |
+| CNAME | `www` | `practicalbaseline.github.io` |
 
-Replace `<your-github-username>` with your GitHub username (or org name).
+Use **DNS only** (grey cloud in Cloudflare) until GitHub provisions HTTPS.
 
-### Optional: redirect bare domain to www
+### Bare domain redirect
 
-If you also own `itsjakegray.com` (without www), set a redirect at your registrar:
-
-`itsjakegray.com` → `https://www.itsjakegray.com`
-
-Or add GitHub's apex A records for `@` and configure both in GitHub Pages docs.
+Redirect `itsjakegray.com` → `https://www.itsjakegray.com` in Cloudflare **Rules**.
 
 ## Verify
 
@@ -31,5 +32,3 @@ Or add GitHub's apex A records for `@` and configure both in GitHub Pages docs.
 dig www.itsjakegray.com CNAME +short
 curl -I https://www.itsjakegray.com
 ```
-
-DNS can take up to 24–48 hours to propagate (often much faster).
