@@ -2,35 +2,32 @@
 
 **https://www.itsjakegray.com**
 
-Repo: [github.com/practicalbaseline/resume-site](https://github.com/practicalbaseline/resume-site)
+## Fix 404 (run once)
 
-## One-time GitHub setup
+```bash
+bash setup-pages.sh
+```
 
-1. Repo must be **Public** (required for free GitHub Pages)
-2. **Settings → Pages → Build and deployment → Source:** `GitHub Actions`
-3. **Settings → Pages → Custom domain:** `www.itsjakegray.com`
-4. Enable **Enforce HTTPS** after DNS check passes
+Then configure Pages in GitHub Settings (the script prints the link).
 
-Pushes to `main` auto-deploy via `.github/workflows/pages.yml`.
+### Why 404 happens
 
-## DNS (Cloudflare)
+1. **Repo is private** — GitHub Pages on free plans requires a **public** repo
+2. **Pages not enabled** — must turn on in Settings → Pages
+3. **Wrong DNS** — `www` must CNAME to `practicalbaseline.github.io`, not A records to Cloudflare
+
+### Cloudflare DNS
 
 | Type | Name | Value | Proxy |
 |------|------|-------|-------|
 | CNAME | `www` | `practicalbaseline.github.io` | DNS only (grey cloud) |
 
-Remove any `www` A records pointing to Cloudflare IPs — they block GitHub from verifying the domain.
+Delete any existing `www` A records first.
 
-### Bare domain
-
-Redirect `itsjakegray.com` → `https://www.itsjakegray.com` in Cloudflare **Rules**.
-
-## Verify
+### Verify
 
 ```bash
 dig www.itsjakegray.com CNAME +short
-# should return: practicalbaseline.github.io
-
 curl -I https://practicalbaseline.github.io/resume-site/
 curl -I https://www.itsjakegray.com
 ```
