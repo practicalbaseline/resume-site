@@ -133,37 +133,9 @@ h3 {
   letter-spacing: 0.03em;
 }
 
-/* Books + Writing */
-.books {
+/* Favorite Authors */
+.authors {
   margin-top: var(--gap);
-}
-
-.books-group {
-  margin-bottom: 1.35rem;
-}
-
-.books-group:last-child {
-  margin-bottom: 0;
-}
-
-.books-group .simple-list {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  color: var(--muted);
-  font-size: 0.9rem;
-  line-height: 1.5;
-}
-
-.books-group .simple-list li {
-  margin: 0.3rem 0;
-}
-
-.series-core {
-  font-size: 0.8rem;
-  color: var(--muted);
-  margin-top: 0.5rem;
-  line-height: 1.4;
 }
 
 /* shared simple primitives kept for reuse */
@@ -173,30 +145,9 @@ h3 {
   list-style: none;
 }
 
-/* Writing */
-.writing {
-  margin-top: var(--gap);
-}
-
-.writing .simple-list {
-  margin: 0;
-  padding: 0;
-  list-style: none;
+.simple-list li {
   color: var(--muted);
-  font-size: 0.9rem;
   line-height: 1.5;
-}
-
-.writing .simple-list li {
-  margin: 0.3rem 0;
-}
-
-/* date for writing */
-.writing .date {
-  font-size: 0.8em;
-  color: var(--faint);
-  margin-right: 0.5rem;
-  font-feature-settings: "tnum";
 }
 
 /* subscribe */
