@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Token Management — Jakob</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <article class="post-page">
+    <a href="../index.html" class="post-back">← Back</a>
+    <h1>Token Management: Best Practices for LLM Applications</h1>
+    <p class="post-meta">2026</p>
+
+    <div class="post-body">
+      <p>
+        Every call to a large language model costs tokens. Every token costs money and time.
+        If you treat the context window as infinite, you'll pay for it — in latency, in bills,
+        and in degraded output quality when the model loses focus in a bloated prompt.
+      </p>
+
+      <p>
+        Token management isn't an optimization you add later. It's a design constraint you
+        build around from the start, the way you'd design around memory limits or network bandwidth.
+      </p>
+
+      <h2>What is a token?</h2>
+
+      <p>
+        A token is the atomic unit a language model reads and generates. It's not quite a word —
+        common words like "the" are usually one token, but longer or unusual words get split into
+        subword pieces. Rough rule of thumb: <strong>1 token ≈ 4 characters</strong> in English,
+        or about <strong>750 words per 1,000 tokens</strong>.
+      </p>
+
+      <p>
+        Both your input (prompt) and the model's output (completion) consume tokens. Most providers
+        charge separately for input and output tokens, with output typically costing more.
+      </p>
+
+      <h2>Know your context window</h2>
+
+      <p>
+        Every model has a maximum context window — the total tokens it can process in a single
+        request (input + output combined). Common ranges today:
+      </p>
+
+      <ul>
+        <li><strong>8K–32K tokens</strong> — older and smaller models</li>
+        <li><strong>128K tokens</strong> — current mainstream (GPT-4o, Claude 3.5)</li>
+        <li><strong>200K–1M+ tokens</strong> — extended-context models</li>
+      </ul>
+
+      <p>
+        A larger window doesn't mean you should fill it. Models often perform worse on tasks
+        buried in the middle of very long contexts — the "lost in the middle" problem.
+        Use the window you need, not the window you have.
+      </p>
+
+      <h2>Best practices</h2>
+
+      <h3>1. Measure before you optimize</h3>
+
+      <p>
+        Use your provider's tokenizer (or a library like <code>tiktoken</code>) to count tokens
+        before sending requests. Log token usage per request, per user, and per feature.
+      </p>
+
+      <pre><code>import tiktoken
+
+enc = tiktoken.encoding_for_model("gpt-4o")
+tokens = enc.encode("Your prompt text here")
+print(f"Token count: {len(tokens)}")</code></pre>
+
+      <h3>2. Structure your prompts deliberately</h3>
+
+      <p>
+        Put the most important instructions at the beginning and end of your prompt.
+        Keep system prompts stable and cacheable. Avoid repeating context the model already has.
+      </p>
+
+      <h3>3. Summarize and compress history</h3>
+
+      <p>
+        In multi-turn conversations, summarize older turns into a compact state object.
+        Keep recent messages verbatim; compress everything older.
+      </p>
+
+      <h3>4. Retrieve, don't dump</h3>
+
+      <p>
+        For RAG systems, retrieve only relevant chunks. Set a hard token budget for retrieved context.
+      </p>
+
+      <h3>5. Set output limits</h3>
+
+      <p>
+        Use <code>max_tokens</code> to cap completion length. A classification label needs 10 tokens;
+        a code review might need 2,000.
+      </p>
+
+      <h3>6. Cache what repeats</h3>
+
+      <p>
+        Structure prompts so static content (system instructions, reference docs) comes first.
+        Many providers serve identical prompt prefixes from cache at reduced cost.
+      </p>
+
+      <h3>7. Choose the right model for the task</h3>
+
+      <p>
+        Route simple queries to smaller models. A good classifier can cut token costs by 60–80%.
+      </p>
+
+      <h2>Red flags</h2>
+
+      <ul>
+        <li>Prompts that grow unboundedly with conversation length</li>
+        <li>Dumping full documents when a summary would suffice</li>
+        <li>No <code>max_tokens</code> limit on completions</li>
+        <li>Using a frontier model for tasks a smaller model handles fine</li>
+        <li>No logging on per-user token consumption</li>
+      </ul>
+
+      <hr>
+
+      <p>
+        Token management is the memory management of the LLM era.
+        <a href="tokens-in-science-fiction.html">Where "tokens" came from →</a>
+      </p>
+    </div>
+  </article>
+</body>
+</html>
