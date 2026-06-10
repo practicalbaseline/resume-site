@@ -1,28 +1,27 @@
 # itsjakegray.com
 
-Static personal site → **https://www.itsjakegray.com**
+**https://www.itsjakegray.com**
 
 Repo: [github.com/practicalbaseline/resume-site](https://github.com/practicalbaseline/resume-site)
 
-## Deploy
+## One-time GitHub setup
 
-1. Push to `practicalbaseline/resume-site`
-2. **Settings → Pages → Source:** `main` branch, `/ (root)`
+1. Repo must be **Public** (required for free GitHub Pages)
+2. **Settings → Pages → Build and deployment → Source:** `GitHub Actions`
 3. **Settings → Pages → Custom domain:** `www.itsjakegray.com`
-4. Wait for DNS check → enable **Enforce HTTPS**
+4. Enable **Enforce HTTPS** after DNS check passes
 
-Until the custom domain is live, the site is also at:
-`https://practicalbaseline.github.io/resume-site/`
+Pushes to `main` auto-deploy via `.github/workflows/pages.yml`.
 
-## DNS (Cloudflare or your registrar)
+## DNS (Cloudflare)
 
-| Type | Name | Value |
-|------|------|-------|
-| CNAME | `www` | `practicalbaseline.github.io` |
+| Type | Name | Value | Proxy |
+|------|------|-------|-------|
+| CNAME | `www` | `practicalbaseline.github.io` | DNS only (grey cloud) |
 
-Use **DNS only** (grey cloud in Cloudflare) until GitHub provisions HTTPS.
+Remove any `www` A records pointing to Cloudflare IPs — they block GitHub from verifying the domain.
 
-### Bare domain redirect
+### Bare domain
 
 Redirect `itsjakegray.com` → `https://www.itsjakegray.com` in Cloudflare **Rules**.
 
@@ -30,5 +29,8 @@ Redirect `itsjakegray.com` → `https://www.itsjakegray.com` in Cloudflare **Rul
 
 ```bash
 dig www.itsjakegray.com CNAME +short
+# should return: practicalbaseline.github.io
+
+curl -I https://practicalbaseline.github.io/resume-site/
 curl -I https://www.itsjakegray.com
 ```
