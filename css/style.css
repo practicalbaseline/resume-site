@@ -32,7 +32,7 @@ h3 {
   color: #444;
 }
 
-ul { margin: 0; padding-left: 1.2em; }
+ul, ol { margin: 0; padding-left: 1.2em; }
 li { margin: 0.4em 0; }
 
 .quote { margin: 0.6em 0; }
