@@ -19,12 +19,42 @@ body {
   color: var(--text);
   background: var(--bg);
   margin: 0;
-  padding: 3rem 1.25rem 4rem;
+  padding: 3rem 0 4rem;
+}
+
+.layout {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 3rem;
+  max-width: 68rem;
+  margin: 0 auto;
+  padding: 0 1.25rem;
 }
 
 .page {
+  flex: 1;
+  min-width: 0;
   max-width: 44rem;
-  margin: 0 auto;
+}
+
+.cactus {
+  flex-shrink: 0;
+  width: 14rem;
+  position: sticky;
+  top: 3rem;
+  padding-top: 0.5rem;
+}
+
+.cactus img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+}
+
+@media (max-width: 860px) {
+  .cactus { display: none; }
 }
 
 a {
