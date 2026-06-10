@@ -37,12 +37,16 @@ body {
   max-width: 38rem;
 }
 
-.cactus {
+.sidebar {
   flex-shrink: 0;
   width: 12rem;
   position: sticky;
   top: 2.75rem;
+}
+
+.cactus {
   opacity: 0.92;
+  margin-bottom: 2rem;
 }
 
 .cactus img {
@@ -52,6 +56,14 @@ body {
 }
 
 @media (max-width: 860px) {
+  .layout { flex-wrap: wrap; }
+
+  .sidebar {
+    width: 100%;
+    position: static;
+    order: 1;
+  }
+
   .cactus { display: none; }
 }
 
@@ -209,8 +221,18 @@ ul, ol {
 .book-title { font-style: italic; }
 
 /* writing */
-.writing a { color: var(--text); font-weight: 500; }
+.writing h2 { margin-bottom: 0.5rem; }
+
+.writing a {
+  color: var(--text);
+  font-weight: 500;
+  font-size: 0.9375rem;
+  line-height: 1.4;
+}
+
 .writing a:hover { color: var(--accent); }
+
+.writing .list li + li { margin-top: 0.5rem; }
 
 /* blog */
 .post .back {
