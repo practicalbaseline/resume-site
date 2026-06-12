@@ -3,52 +3,109 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Jake Gray — projects, favorite quotes, and favorite authors.">
+  <meta name="description" content="Jake Gray — projects, quotes, and authors.">
   <link rel="canonical" href="https://www.itsjakegray.com/">
   <title>Jake Gray</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
+  <!--
+    Prototype A: "Typography-first vertical flow"
+
+    This is a complete re-imagining of the layout and styles emphasizing
+    extreme simplicity and beauty through typography + whitespace.
+
+    - Strong single-column vertical stack.
+    - Massive breathing room (very generous padding + inter-section margins).
+    - Projects dominate: larger type, heavier weight, generous item gaps,
+      and the *only* subtle line/accent treatment in the entire design.
+    - Serif used sparingly and beautifully — almost exclusively for the
+      large featured quote in Quotes I deeply agree with (Arthur C. Clarke).
+    - Almost no borders, rules, boxes, or chrome. Visual separation arises
+      purely from space, vertical rhythm, type scale/weight/color.
+    - Name at top is deliberately tiny + low-contrast (faint color, tiny size,
+      wide tracking) so the eye lands immediately on "Projects".
+    - Sci-fi dark grid background with cyan font coloring and accents (inspired by classic sci-fi interfaces and HUDs).
+    - Subscribe form is extremely light, underline-only, zero competing weight.
+    - Goal: calm, spacious, premium page that feels "aggressively" simple.
+      Signal only; no noise.
+
+    Content text and section order are exactly as specified. No additions.
+  -->
+
   <h1 class="name">Jake Gray</h1>
 
-  <!-- 1. Projects (primary / first signal) -->
+  <!-- 1. Projects (most prominent) -->
   <section class="projects">
     <h2>Projects</h2>
     <ul class="items">
       <li>
-        <span class="item-name"><a href="https://dfsim.vercel.app/">Competitive Dry-Fire Trainer</a></span>
-        <span class="item-detail">See exactly how fast your eyes need to move to shoot fast.</span>
+        <span class="item-name"><a href="http://www.sweatygm.com">SweatyGM.com</a></span>
+        <span class="item-detail">See exactly how fast your eyes need to move in order achieve GM-level transitions between targets in match environments.</span>
       </li>
       <li>
-        <span class="item-name">Mechanic Simulator</span>
-        <span class="item-detail">Pick any part on the motorcycle. Be told how to fix it.</span>
+        <span class="item-name">Rare Book Finder</span>
+        <span class="item-detail">Upload a photo of any bookstore shelf (in any language) and instantly learn exactly which books are hard to find, rare, or out of print to grow your collection—the older the better.</span>
+      </li>
+      <li>
+        <span class="item-name">Match Director Stage Design Tool</span>
+        <span class="item-detail">Generate complete stage designs with precise coordinates for every foot fault, popper, and paper target, then export approved files to setup teams to streamline competition preparation.</span>
       </li>
     </ul>
   </section>
 
-  <!-- 2. Favorite Quotes -->
+  <!-- 2. Quotes I deeply agree with -->
   <section class="quotes">
-    <h2>Favorite Quotes</h2>
+    <h2>Quotes I deeply agree with</h2>
 
     <blockquote class="quote">
-      Any sufficiently advanced technology is indistinguishable from magic.
-      <cite>Arthur C. Clarke</cite>
+      “Any sufficiently advanced technology is indistinguishable from magic.”
+      <cite>— Arthur C. Clarke</cite>
     </blockquote>
+
+    <blockquote class="quote">
+      “Self-education is, I firmly believe, the only kind of education there is.”
+      <cite>— Isaac Asimov, <em>Science Past, Science Future</em> (1975) p. 208</cite>
+    </blockquote>
+
+    <blockquote class="quote">
+      “But it remains the case that you know what is wrong with a lot more confidence than you know what is right.”
+      <cite>— Nassim Nicholas Taleb</cite>
+    </blockquote>
+
+    <!-- Clarke's Laws - Engineering Schematic Overview (basic understanding, transparent schematic style) -->
+    <div class="clarkes-schematic">
+      <div class="schematic-header">CLARKE'S LAWS • SYSTEM DIAGRAM</div>
+      <div class="law-row">
+        <div class="law-box">1<br>ELDERLY EXPERT<br>"IMPOSSIBLE"?<br>↓ PROBABLY WRONG</div>
+        <div class="law-connector">→</div>
+        <div class="law-box">2<br>VENTURE PAST<br>POSSIBLE LIMITS<br>↓ DISCOVER</div>
+        <div class="law-connector">→</div>
+        <div class="law-box">3<br>ADVANCED TECH<br>↓<br>MAGIC</div>
+      </div>
+      <div class="schematic-note">Engineering view: Laws as control flow for innovation</div>
+    </div>
   </section>
 
   <!-- 3. Favorite Authors -->
-  <section class="authors">
+  <section class="books">
     <h2>Favorite Authors</h2>
 
     <ul class="simple-list">
-      <li>Arthur C. Clarke</li>
-      <li>Isaac Asimov</li>
+      <li>Voltaire</li>
       <li>Milton Friedman</li>
+      <li>Arthur C. Clarke</li>
+      <li>Iain M. Banks</li>
+      <li>Isaac Asimov</li>
+      <li>Nassim Nicholas Taleb</li>
+      <li>Friedrich Hayek</li>
+      <li>Fyodor Dostoevsky</li>
+      <li>Friedrich Nietzsche</li>
     </ul>
   </section>
 
-  <!-- Light subscribe (secondary, after the signal) -->
+  <!-- Very light subscribe (at the very end; reuses Buttondown embed action; minimal label) -->
   <section class="subscribe">
     <form
       action="https://buttondown.com/api/emails/embed-subscribe/jakeg95"
