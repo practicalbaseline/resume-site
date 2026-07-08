@@ -352,73 +352,8 @@ h2 {
   opacity: 0.55;
 }
 
-/* ——— Subscribe ——— */
-.subscribe {
-  margin-top: 0.5rem;
-  padding-top: 1.75rem;
-  border-top: 1px solid var(--line);
-}
-
-.subscribe-form label {
-  display: block;
-  font-family: var(--mono);
-  font-size: 0.62rem;
-  font-weight: 500;
-  color: var(--faint);
-  margin-bottom: 0.45rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-}
-
-.subscribe-row {
-  display: flex;
-  gap: 1rem;
-  align-items: baseline;
-}
-
-.subscribe-form input[type="email"] {
-  flex: 1;
-  min-width: 0;
-  font: inherit;
-  font-size: 0.9rem;
-  padding: 0.3rem 0;
-  border: none;
-  border-bottom: 1px solid var(--line);
-  background: transparent;
-  color: var(--text);
-  border-radius: 0;
-}
-
-.subscribe-form input[type="email"]::placeholder {
-  color: var(--faint);
-}
-
-.subscribe-form input[type="email"]:focus {
-  outline: none;
-  border-bottom-color: var(--accent-dim);
-}
-
-.subscribe-form input[type="submit"] {
-  font-family: var(--mono);
-  font-size: 0.68rem;
-  font-weight: 500;
-  padding: 0.3rem 0;
-  border: none;
-  background: transparent;
-  color: var(--accent-dim);
-  cursor: pointer;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  transition: color 0.15s ease;
-}
-
-.subscribe-form input[type="submit"]:hover {
-  color: var(--accent);
-}
-
 /* ——— Focus ——— */
 a:focus-visible,
-input:focus-visible,
 .entry summary:focus-visible {
   outline: 1px solid var(--accent);
   outline-offset: 3px;
@@ -467,20 +402,13 @@ input:focus-visible,
     padding: 0.1rem 0.85rem 1.15rem 0.85rem;
     padding-left: calc(1.85rem + 0.65rem + 0.85rem);
   }
-
-  .subscribe-row {
-    flex-direction: column;
-    gap: 0.6rem;
-    align-items: flex-start;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .entry summary,
   .entry-chevron,
-  .projects .item-name a,
-  .subscribe-form input[type="submit"] {
+  .projects .item-name a {
     transition: none;
   }
 }
