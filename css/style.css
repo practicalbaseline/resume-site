@@ -1,79 +1,190 @@
 :root {
-  --bg: #000000;
-  --text: #ffffff;
-  --muted: #e0e0e0;
-  --faint: #a0a0a0;
-  --line: #2a2a2a;
-  --neon: #00ffaa; /* Neon Cyan Green */
-  --gap: 6rem;
+  --bg: #05070a;
+  --bg-elevated: #0a0e14;
+  --text: #e8eaed;
+  --muted: #9aa3b2;
+  --faint: #6b7380;
+  --line: #1a2230;
+  --line-soft: rgba(0, 240, 200, 0.12);
+  --accent: #00f0c8;
+  --accent-dim: rgba(0, 240, 200, 0.55);
+  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
+  --sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  --gap: 5.5rem;
+  --measure: 40rem;
 }
 
 * { box-sizing: border-box; }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  font: 16.5px/1.78 ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font: 16px/1.7 var(--sans);
   color: var(--text);
-  background: var(--bg);
-  background-image: 
-    linear-gradient(rgba(0, 255, 170, 0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 255, 170, 0.025) 1px, transparent 1px);
-  background-size: 25px 25px;
-  max-width: 37rem;
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(0, 240, 200, 0.06), transparent 55%),
+    linear-gradient(rgba(0, 240, 200, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 240, 200, 0.03) 1px, transparent 1px);
+  background-size: 100% 100%, 28px 28px, 28px 28px;
+  background-attachment: fixed;
+  max-width: var(--measure);
   margin: 0 auto;
-  padding: 7.5rem 1.5rem 6rem;
+  padding: 5.5rem 1.5rem 6rem;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 
-/* Ultra-minimal name: deliberately tiny, low-contrast, low-noise.
-   The eye moves straight to Projects as the first substantial signal. Sci-fi dark theme. */
+/* ——— Header ——— */
+.site-header {
+  margin-bottom: var(--gap);
+}
+
 .name {
-  font-size: 1.1rem;
+  font-size: 0.8rem;
   font-weight: 500;
-  color: var(--neon);
-  margin: 0 0 3rem;
-  letter-spacing: 0.05em;
-}
-
-/* Global links are white for professional, easy-on-the-eyes readability. Special project names use neon. */
-a {
-  color: var(--text);
-  text-decoration: none;
-}
-
-/* Section headings are calm and understated by default (white for easy reading).
-   Projects gets a specific override to neon cyan green. */
-h2 {
-  font-size: 1.25rem;
-  font-weight: 500;
-  color: var(--text);
+  font-family: var(--mono);
+  color: var(--accent);
   margin: 0 0 1.25rem;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
 }
 
-h3 {
-  font-size: 0.72rem;
-  font-weight: 500;
-  color: var(--faint);
-  margin: 0 0 0.4rem;
-  letter-spacing: 0.08em;
-}
-
-/* 1. PROJECTS — dominates visually via larger type, weight, and generous item spacing.
-   This is the *only* place with any subtle line or accent (the thin bottom border on titles, now cyan).
-   Everything else separates purely through whitespace, size, weight, and color. Sci-fi dark grid theme. */
-.projects h2 {
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: var(--neon);
-  margin-bottom: 2rem;
+.tagline {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: clamp(1.45rem, 4vw, 1.85rem);
+  font-weight: 400;
+  line-height: 1.35;
+  color: var(--text);
   letter-spacing: -0.01em;
+  max-width: 22ch;
 }
 
-/* Neon cyan green for Quotes I deeply agree with and Favorite Authors headers to match the specified project names */
-.quotes h2,
-.books h2 {
-  color: var(--neon);
+/* ——— Section headings ——— */
+h2 {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--accent);
+  margin: 0 0 2rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+/* ——— Foundations ——— */
+.foundations {
+  margin-bottom: var(--gap);
+}
+
+.principle {
+  padding: 1.75rem 0 2rem;
+  border-top: 1px solid var(--line);
+}
+
+.principle:first-of-type {
+  border-top: 1px solid var(--line-soft);
+}
+
+.principle-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem 1rem;
+  margin-bottom: 0.65rem;
+}
+
+.principle-domain {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-dim);
+}
+
+.principle-source {
+  font-size: 0.75rem;
+  color: var(--faint);
+  letter-spacing: 0.02em;
+}
+
+.principle-source::before {
+  content: "·";
+  margin-right: 0.65rem;
+  color: var(--line);
+}
+
+.principle-title {
+  font-family: var(--sans);
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  margin: 0 0 1rem;
+  line-height: 1.25;
+}
+
+.principle-statement {
+  margin: 0 0 1rem;
+  padding: 0;
+  border: none;
+  font-family: var(--serif);
+  font-size: 1.08rem;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.55;
+  color: var(--text);
+}
+
+.principle-note {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+/* Clarke’s laws as numbered list */
+.principle-laws {
+  margin: 0 0 1.15rem;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.principle-laws li {
+  display: grid;
+  grid-template-columns: 1.5rem 1fr;
+  gap: 0.75rem;
+  align-items: start;
+}
+
+.law-num {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--accent);
+  letter-spacing: 0.06em;
+  padding-top: 0.2rem;
+}
+
+.principle-laws p {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: 1.02rem;
+  font-style: italic;
+  line-height: 1.55;
+  color: var(--text);
+}
+
+/* ——— Building / Projects ——— */
+.projects {
+  margin-bottom: var(--gap);
 }
 
 .projects .items {
@@ -83,188 +194,91 @@ h3 {
 }
 
 .projects .items > li {
-  margin-bottom: 2.25rem;
+  padding: 1.25rem 0;
+  border-top: 1px solid var(--line);
 }
 
-.projects .items > li:last-child {
-  margin-bottom: 0;
+.projects .items > li:first-child {
+  border-top: 1px solid var(--line-soft);
 }
 
 .projects .item-name {
   display: block;
-  font-size: 1.05rem;
+  font-size: 1.02rem;
   font-weight: 600;
-  line-height: 1.25;
-}
-
-/* Neon cyan green for all project names (and link for first) */
-.projects .items > li:nth-child(1) .item-name,
-.projects .items > li:nth-child(1) .item-name a,
-.projects .items > li:nth-child(2) .item-name,
-.projects .items > li:nth-child(3) .item-name {
-  color: var(--neon);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  color: var(--text);
 }
 
 .projects .item-name a {
-  border-bottom: 1px solid var(--accent);
-  padding-bottom: 2px;
+  color: var(--text);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color 0.15s ease, border-color 0.15s ease;
 }
 
 .projects .item-name a:hover {
-  border-bottom-color: var(--accent);
+  color: var(--accent);
+  border-bottom-color: var(--accent-dim);
 }
 
 .projects .item-detail {
   display: block;
-  margin-top: 0.6rem;
-  font-size: 1rem;
-  color: var(--text);
+  margin-top: 0.45rem;
+  font-size: 0.92rem;
+  color: var(--muted);
   line-height: 1.55;
 }
 
-/* Consistent margin-bottom on main content sections provides even, clean 6rem
-   spacing between the end of one section's content and the h2 of the next.
-   This replaces the previous margin-top approach for more predictable
-   inter-section breathing room (especially Quotes I deeply agree with to Favorite Authors). */
-.projects,
-.quotes,
-.books {
+/* ——— Influences ——— */
+.influences {
   margin-bottom: var(--gap);
 }
 
-/* 2. QUOTES — clean and beautiful serif treatment for the featured quote.
-   Subtler size and spacing keep it elegant and integrated rather than dominant.
-   Quotation marks add classic polish without noise. Sci-fi cyan accents on dark grid. */
-.quotes {
-  /* margin-top removed; spacing now via the section group margin-bottom */
-}
-
-.quotes .quote {
-  margin: 0 0 2rem;
-  font-family: ui-serif, Georgia, "Times New Roman", serif;
-  font-size: 1.05rem;
-  font-weight: 400;
-  font-style: italic;
-  line-height: 1.4;
-  color: var(--text);
-}
-
-.quotes .quote cite {
-  display: block;
-  margin-top: 0.6rem;
-  font-family: ui-sans-serif, system-ui, sans-serif;
-  font-size: 0.8rem;
-  font-style: normal;
-  font-weight: 400;
-  color: var(--faint);
-  letter-spacing: 0.08em;
-}
-
-/* Clarke's Laws - Engineering-inspired schematic / cartoon overview.
-   Placed transparently at bottom of Quotes I deeply agree with as basic understanding diagram.
-   Subtle dashed boxes, arrows, mono font for schematic/tech drawing feel.
-   Low opacity to sit in background without noise. */
-.clarkes-schematic {
-  max-width: 90%;
-  margin: 1.5rem auto 0;
-  padding: 0.6rem;
-  border: 1px dashed var(--neon);
-  background: rgba(0, 255, 170, 0.02);
-  font-family: ui-monospace, monospace;
-  font-size: 0.6rem;
-  color: var(--faint);
-  opacity: 0.7;
-  text-align: center;
-  line-height: 1.2;
-}
-
-.schematic-header {
-  font-size: 0.7rem;
-  color: var(--neon);
-  margin-bottom: 0.4rem;
-  letter-spacing: 0.1em;
-  border-bottom: 1px solid var(--neon);
-  padding-bottom: 0.2rem;
-}
-
-.law-row {
+.influence-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
   display: flex;
-  align-items: flex-start;
-  justify-content: space-evenly;
-  gap: 0.4rem;
+  flex-wrap: wrap;
+  gap: 0.5rem 0.35rem;
 }
 
-.law-box {
-  flex: 1;
-  border: 1px solid var(--neon);
-  padding: 0.25rem 0.15rem;
-  background: rgba(0, 0, 0, 0.15);
-  font-size: 0.55rem;
-  line-height: 1.15;
-}
-
-.law-connector {
-  color: var(--neon);
-  font-size: 0.8rem;
-  padding: 0 0.15rem;
-  align-self: center;
-}
-
-.schematic-note {
-  font-size: 0.55rem;
-  margin-top: 0.3rem;
-  color: var(--faint);
-  font-style: italic;
-}
-
-/* 3. FAVORITE AUTHORS — understated, clean list of authors that continues the vertical rhythm without competing. Sci-fi dark mono theme. */
-.books {
-  /* margin-top removed; spacing now via the section group margin-bottom for even gaps */
-}
-
-.books .simple-list {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  font-size: 0.95rem;
-  line-height: 1.6;
+.influence-list li {
+  font-size: 0.88rem;
   color: var(--muted);
+  letter-spacing: 0.01em;
 }
 
-.books .simple-list li {
-  margin: 0.4rem 0;
+.influence-list li:not(:last-child)::after {
+  content: "·";
+  margin-left: 0.5rem;
+  color: var(--faint);
+  opacity: 0.6;
 }
 
-.books .simple-list li:last-child {
-  margin-bottom: 0;
-}
-
-/* shared primitive (kept minimal) */
-.simple-list {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-/* Very light subscribe at the absolute end. Minimal "Updates" label.
-   Underline-only email field + ghost button. Zero boxes, zero visual weight.
-   Large preceding margin so it never competes with the signal above. Sci-fi terminal style. */
+/* ——— Subscribe ——— */
 .subscribe {
-  margin-top: calc(var(--gap) * 1.3);
+  margin-top: 1rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--line);
 }
 
 .subscribe-form label {
   display: block;
+  font-family: var(--mono);
   font-size: 0.65rem;
-  font-weight: 400;
+  font-weight: 500;
   color: var(--faint);
-  margin-bottom: 0.3rem;
-  letter-spacing: 0.1em;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
 }
 
 .subscribe-row {
   display: flex;
-  gap: 1.25rem;
+  gap: 1rem;
   align-items: baseline;
 }
 
@@ -272,36 +286,73 @@ h3 {
   flex: 1;
   min-width: 0;
   font: inherit;
-  font-size: 0.85rem;
-  padding: 0.2rem 0;
+  font-size: 0.9rem;
+  padding: 0.35rem 0;
   border: none;
   border-bottom: 1px solid var(--line);
   background: transparent;
   color: var(--text);
+  border-radius: 0;
+}
+
+.subscribe-form input[type="email"]::placeholder {
+  color: var(--faint);
 }
 
 .subscribe-form input[type="email"]:focus {
   outline: none;
-  border-bottom-color: var(--muted);
+  border-bottom-color: var(--accent-dim);
 }
 
 .subscribe-form input[type="submit"] {
-  font: inherit;
-  font-size: 0.72rem;
-  font-weight: 400;
-  padding: 0.2rem 0;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  padding: 0.35rem 0;
   border: none;
   background: transparent;
-  color: var(--muted);
+  color: var(--accent-dim);
   cursor: pointer;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: color 0.15s ease;
 }
 
 .subscribe-form input[type="submit"]:hover {
-  color: var(--text);
+  color: var(--accent);
+}
+
+/* ——— Focus & accessibility ——— */
+a:focus-visible,
+input:focus-visible {
+  outline: 1px solid var(--accent);
+  outline-offset: 3px;
 }
 
 @media (max-width: 420px) {
-  .subscribe-row { flex-direction: column; gap: 0.5rem; align-items: flex-start; }
-  .subscribe-form input[type="submit"] { padding-top: 0.5rem; }
+  body {
+    padding: 3.5rem 1.15rem 4.5rem;
+  }
+
+  .tagline {
+    max-width: none;
+  }
+
+  .subscribe-row {
+    flex-direction: column;
+    gap: 0.65rem;
+    align-items: flex-start;
+  }
+
+  .principle-laws li {
+    grid-template-columns: 1.25rem 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .projects .item-name a,
+  .subscribe-form input[type="submit"] {
+    transition: none;
+  }
 }
