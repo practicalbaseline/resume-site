@@ -3,196 +3,167 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Jake Gray — daily reference table of principles, laws, and foundational basics.">
+  <meta name="description" content="Jake Gray — a personal index of principles, laws, and foundational basics.">
   <link rel="canonical" href="https://www.itsjakegray.com/">
-  <title>Jake Gray — Reference</title>
+  <title>Jake Gray</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
   <header class="site-header">
-    <div class="header-row">
-      <h1 class="name">Jake Gray</h1>
-      <p class="header-meta"><span id="visible-count">10</span> entries</p>
-    </div>
-    <p class="tagline">Reference table of principles, laws, and foundational basics.</p>
+    <h1 class="name">Jake Gray</h1>
+    <p class="tagline">A personal index of principles, laws, and foundational basics.</p>
   </header>
 
-  <section class="reference" aria-labelledby="reference-heading">
-    <h2 id="reference-heading" class="visually-hidden">Reference</h2>
-
-    <div class="toolbar">
-      <label class="search-wrap" for="search">
-        <span class="visually-hidden">Search</span>
-        <input
-          type="search"
-          id="search"
-          class="search"
-          placeholder="Filter by name, domain, source…"
-          autocomplete="off"
-          spellcheck="false"
-        >
-      </label>
-
-      <div class="filters" role="group" aria-label="Filter by domain">
-        <button type="button" class="filter is-active" data-domain="all">All</button>
-        <button type="button" class="filter" data-domain="Technology">Technology</button>
-        <button type="button" class="filter" data-domain="Learning">Learning</button>
-        <button type="button" class="filter" data-domain="Knowledge">Knowledge</button>
-        <button type="button" class="filter" data-domain="Reasoning">Reasoning</button>
-        <button type="button" class="filter" data-domain="Order">Order</button>
-        <button type="button" class="filter" data-domain="Exchange">Exchange</button>
-        <button type="button" class="filter" data-domain="Science">Science</button>
-      </div>
+  <section class="canon" aria-labelledby="canon-heading">
+    <div class="canon-head">
+      <h2 id="canon-heading">Index</h2>
+      <p class="canon-count" aria-hidden="true">08</p>
     </div>
 
-    <div class="table-shell">
-      <table class="ref-table">
-        <thead>
-          <tr>
-            <th scope="col" class="col-id">#</th>
-            <th scope="col" class="col-name">Name</th>
-            <th scope="col" class="col-domain">Domain</th>
-            <th scope="col" class="col-axiom">Axiom</th>
-            <th scope="col" class="col-source">Source</th>
-          </tr>
-        </thead>
-        <tbody id="ref-body">
+    <p class="canon-hint">Open an entry to read the full statement.</p>
 
-          <tr
-            data-name="clarke's first law"
-            data-domain="Technology"
-            data-source="Arthur C. Clarke"
-            data-axiom="When a distinguished but elderly scientist states that something is possible, he is almost certainly right. When he states that something is impossible, he is very probably wrong."
-          >
-            <td class="col-id">01</td>
-            <td class="col-name">Clarke’s First Law</td>
-            <td class="col-domain"><span class="domain-tag">Technology</span></td>
-            <td class="col-axiom">When a distinguished but elderly scientist states that something is possible, he is almost certainly right. When he states that something is impossible, he is very probably wrong.</td>
-            <td class="col-source">Arthur C. Clarke</td>
-          </tr>
+    <div class="index" role="list">
 
-          <tr
-            data-name="clarke's second law"
-            data-domain="Technology"
-            data-source="Arthur C. Clarke"
-            data-axiom="The only way of discovering the limits of the possible is to venture a little way past them into the impossible."
-          >
-            <td class="col-id">02</td>
-            <td class="col-name">Clarke’s Second Law</td>
-            <td class="col-domain"><span class="domain-tag">Technology</span></td>
-            <td class="col-axiom">The only way of discovering the limits of the possible is to venture a little way past them into the impossible.</td>
-            <td class="col-source">Arthur C. Clarke</td>
-          </tr>
+      <details class="entry" role="listitem" id="clarkes-laws">
+        <summary>
+          <span class="entry-id">01</span>
+          <span class="entry-title">Clarke’s Three Laws</span>
+          <span class="entry-domain">Technology</span>
+          <span class="entry-chevron" aria-hidden="true"></span>
+        </summary>
+        <div class="entry-body">
+          <p class="entry-source">Arthur C. Clarke</p>
+          <ol class="laws">
+            <li>
+              <span class="law-id">I</span>
+              <p>When a distinguished but elderly scientist states that something is possible, he is almost certainly right. When he states that something is impossible, he is very probably wrong.</p>
+            </li>
+            <li>
+              <span class="law-id">II</span>
+              <p>The only way of discovering the limits of the possible is to venture a little way past them into the impossible.</p>
+            </li>
+            <li>
+              <span class="law-id">III</span>
+              <p>Any sufficiently advanced technology is indistinguishable from magic.</p>
+            </li>
+          </ol>
+          <p class="entry-gloss">Control flow for innovation: discount premature impossibility, push past the edge, then build what once looked like magic.</p>
+        </div>
+      </details>
 
-          <tr
-            data-name="clarke's third law"
-            data-domain="Technology"
-            data-source="Arthur C. Clarke"
-            data-axiom="Any sufficiently advanced technology is indistinguishable from magic."
-          >
-            <td class="col-id">03</td>
-            <td class="col-name">Clarke’s Third Law</td>
-            <td class="col-domain"><span class="domain-tag">Technology</span></td>
-            <td class="col-axiom">Any sufficiently advanced technology is indistinguishable from magic.</td>
-            <td class="col-source">Arthur C. Clarke</td>
-          </tr>
+      <details class="entry" role="listitem" id="self-education">
+        <summary>
+          <span class="entry-id">02</span>
+          <span class="entry-title">Self-Education</span>
+          <span class="entry-domain">Learning</span>
+          <span class="entry-chevron" aria-hidden="true"></span>
+        </summary>
+        <div class="entry-body">
+          <p class="entry-source">Isaac Asimov</p>
+          <blockquote class="entry-statement">
+            Self-education is, I firmly believe, the only kind of education there is.
+          </blockquote>
+          <p class="entry-gloss">Formal instruction is scaffolding. Understanding is built alone, by sustained attention to first sources and hard problems.</p>
+        </div>
+      </details>
 
-          <tr
-            data-name="self-education"
-            data-domain="Learning"
-            data-source="Isaac Asimov"
-            data-axiom="Self-education is the only kind of education there is."
-          >
-            <td class="col-id">04</td>
-            <td class="col-name">Self-Education</td>
-            <td class="col-domain"><span class="domain-tag">Learning</span></td>
-            <td class="col-axiom">Self-education is the only kind of education there is.</td>
-            <td class="col-source">Isaac Asimov</td>
-          </tr>
+      <details class="entry" role="listitem" id="knowledge-problem">
+        <summary>
+          <span class="entry-id">03</span>
+          <span class="entry-title">The Knowledge Problem</span>
+          <span class="entry-domain">Knowledge</span>
+          <span class="entry-chevron" aria-hidden="true"></span>
+        </summary>
+        <div class="entry-body">
+          <p class="entry-source">Friedrich Hayek</p>
+          <blockquote class="entry-statement">
+            The knowledge of the circumstances of which we must make use never exists in concentrated or integrated form, but solely as the dispersed bits of incomplete and frequently contradictory knowledge which all the separate individuals possess.
+          </blockquote>
+          <p class="entry-gloss">No planner holds the full map. Route decisions to people with local information; let prices, feedback, and selection do the rest.</p>
+        </div>
+      </details>
 
-          <tr
-            data-name="the knowledge problem"
-            data-domain="Knowledge"
-            data-source="Friedrich Hayek"
-            data-axiom="Useful knowledge is dispersed; no single mind holds the full map."
-          >
-            <td class="col-id">05</td>
-            <td class="col-name">The Knowledge Problem</td>
-            <td class="col-domain"><span class="domain-tag">Knowledge</span></td>
-            <td class="col-axiom">Useful knowledge is dispersed; no single mind holds the full map.</td>
-            <td class="col-source">Friedrich Hayek</td>
-          </tr>
+      <details class="entry" role="listitem" id="first-principles">
+        <summary>
+          <span class="entry-id">04</span>
+          <span class="entry-title">First Principles</span>
+          <span class="entry-domain">Reasoning</span>
+          <span class="entry-chevron" aria-hidden="true"></span>
+        </summary>
+        <div class="entry-body">
+          <p class="entry-source">Classical</p>
+          <blockquote class="entry-statement">
+            Reason from fundamental truths you can verify, not from analogy to what already exists.
+          </blockquote>
+          <p class="entry-gloss">Analogy is a shortcut; first principles are the ground. Break a problem into what must be true, then rebuild upward.</p>
+        </div>
+      </details>
 
-          <tr
-            data-name="first principles"
-            data-domain="Reasoning"
-            data-source="Classical"
-            data-axiom="Reason from fundamental truths you can verify, not from analogy to what already exists."
-          >
-            <td class="col-id">06</td>
-            <td class="col-name">First Principles</td>
-            <td class="col-domain"><span class="domain-tag">Reasoning</span></td>
-            <td class="col-axiom">Reason from fundamental truths you can verify, not from analogy to what already exists.</td>
-            <td class="col-source">Classical</td>
-          </tr>
+      <details class="entry" role="listitem" id="occams-razor">
+        <summary>
+          <span class="entry-id">05</span>
+          <span class="entry-title">Occam’s Razor</span>
+          <span class="entry-domain">Reasoning</span>
+          <span class="entry-chevron" aria-hidden="true"></span>
+        </summary>
+        <div class="entry-body">
+          <p class="entry-source">William of Ockham</p>
+          <blockquote class="entry-statement">
+            Entities should not be multiplied beyond necessity.
+          </blockquote>
+          <p class="entry-gloss">Prefer the explanation that accounts for the facts with the fewest free parameters. Complexity is a cost — pay it only when the data demand it.</p>
+        </div>
+      </details>
 
-          <tr
-            data-name="occam's razor"
-            data-domain="Reasoning"
-            data-source="William of Ockham"
-            data-axiom="Entities should not be multiplied beyond necessity."
-          >
-            <td class="col-id">07</td>
-            <td class="col-name">Occam’s Razor</td>
-            <td class="col-domain"><span class="domain-tag">Reasoning</span></td>
-            <td class="col-axiom">Entities should not be multiplied beyond necessity.</td>
-            <td class="col-source">William of Ockham</td>
-          </tr>
+      <details class="entry" role="listitem" id="spontaneous-order">
+        <summary>
+          <span class="entry-id">06</span>
+          <span class="entry-title">Spontaneous Order</span>
+          <span class="entry-domain">Order</span>
+          <span class="entry-chevron" aria-hidden="true"></span>
+        </summary>
+        <div class="entry-body">
+          <p class="entry-source">Hayek · Smith lineage</p>
+          <blockquote class="entry-statement">
+            Complex order can emerge from simple rules followed by many agents — without a central designer holding the whole design in mind.
+          </blockquote>
+          <p class="entry-gloss">Markets, language, common law, and open protocols share this shape: local rules, global pattern. Design the rules; don’t micromanage the outcome.</p>
+        </div>
+      </details>
 
-          <tr
-            data-name="spontaneous order"
-            data-domain="Order"
-            data-source="Hayek · Smith"
-            data-axiom="Complex order can emerge from simple rules followed by many agents — no central designer required."
-          >
-            <td class="col-id">08</td>
-            <td class="col-name">Spontaneous Order</td>
-            <td class="col-domain"><span class="domain-tag">Order</span></td>
-            <td class="col-axiom">Complex order can emerge from simple rules followed by many agents — no central designer required.</td>
-            <td class="col-source">Hayek · Smith</td>
-          </tr>
+      <details class="entry" role="listitem" id="voluntary-exchange">
+        <summary>
+          <span class="entry-id">07</span>
+          <span class="entry-title">Voluntary Exchange</span>
+          <span class="entry-domain">Exchange</span>
+          <span class="entry-chevron" aria-hidden="true"></span>
+        </summary>
+        <div class="entry-body">
+          <p class="entry-source">Milton Friedman</p>
+          <blockquote class="entry-statement">
+            The most important single central fact about a free market is that no exchange takes place unless both parties benefit.
+          </blockquote>
+          <p class="entry-gloss">Consent plus mutual gain is the basic unit of peaceful coordination. Coercion is the exception that must justify itself — not the default.</p>
+        </div>
+      </details>
 
-          <tr
-            data-name="voluntary exchange"
-            data-domain="Exchange"
-            data-source="Milton Friedman"
-            data-axiom="No exchange takes place unless both parties benefit."
-          >
-            <td class="col-id">09</td>
-            <td class="col-name">Voluntary Exchange</td>
-            <td class="col-domain"><span class="domain-tag">Exchange</span></td>
-            <td class="col-axiom">No exchange takes place unless both parties benefit.</td>
-            <td class="col-source">Milton Friedman</td>
-          </tr>
+      <details class="entry" role="listitem" id="second-law">
+        <summary>
+          <span class="entry-id">08</span>
+          <span class="entry-title">The Second Law</span>
+          <span class="entry-domain">Science</span>
+          <span class="entry-chevron" aria-hidden="true"></span>
+        </summary>
+        <div class="entry-body">
+          <p class="entry-source">Thermodynamics</p>
+          <blockquote class="entry-statement">
+            Entropy of an isolated system never decreases. Order requires work.
+          </blockquote>
+          <p class="entry-gloss">Decay is free; structure is paid for. Every durable system — a machine, a company, a skill — is a continuous fight against disorder.</p>
+        </div>
+      </details>
 
-          <tr
-            data-name="the second law"
-            data-domain="Science"
-            data-source="Thermodynamics"
-            data-axiom="Entropy of an isolated system never decreases. Order requires work."
-          >
-            <td class="col-id">10</td>
-            <td class="col-name">The Second Law</td>
-            <td class="col-domain"><span class="domain-tag">Science</span></td>
-            <td class="col-axiom">Entropy of an isolated system never decreases. Order requires work.</td>
-            <td class="col-source">Thermodynamics</td>
-          </tr>
-
-        </tbody>
-      </table>
-
-      <p class="empty-state" id="empty-state" hidden>No matching entries.</p>
     </div>
   </section>
 
@@ -214,6 +185,20 @@
     </ul>
   </section>
 
+  <section class="influences" aria-labelledby="influences-heading">
+    <h2 id="influences-heading">Influences</h2>
+    <ul class="influence-list">
+      <li>Arthur C. Clarke</li>
+      <li>Isaac Asimov</li>
+      <li>Iain M. Banks</li>
+      <li>Friedrich Hayek</li>
+      <li>Milton Friedman</li>
+      <li>Voltaire</li>
+      <li>Fyodor Dostoevsky</li>
+      <li>Friedrich Nietzsche</li>
+    </ul>
+  </section>
+
   <section class="subscribe">
     <form
       action="https://buttondown.com/api/emails/embed-subscribe/jakeg95"
@@ -227,63 +212,6 @@
       </div>
     </form>
   </section>
-
-  <script>
-    (function () {
-      var search = document.getElementById("search");
-      var body = document.getElementById("ref-body");
-      var rows = Array.prototype.slice.call(body.querySelectorAll("tr"));
-      var empty = document.getElementById("empty-state");
-      var countEl = document.getElementById("visible-count");
-      var filters = Array.prototype.slice.call(document.querySelectorAll(".filter"));
-      var activeDomain = "all";
-
-      function apply() {
-        var q = (search.value || "").trim().toLowerCase();
-        var visible = 0;
-
-        rows.forEach(function (row) {
-          var domain = row.getAttribute("data-domain") || "";
-          var hay = [
-            row.getAttribute("data-name") || "",
-            domain,
-            row.getAttribute("data-source") || "",
-            row.getAttribute("data-axiom") || ""
-          ].join(" ").toLowerCase();
-
-          var domainOk = activeDomain === "all" || domain === activeDomain;
-          var searchOk = !q || hay.indexOf(q) !== -1;
-          var show = domainOk && searchOk;
-
-          row.hidden = !show;
-          if (show) visible += 1;
-        });
-
-        empty.hidden = visible !== 0;
-        countEl.textContent = String(visible);
-      }
-
-      search.addEventListener("input", apply);
-
-      filters.forEach(function (btn) {
-        btn.addEventListener("click", function () {
-          activeDomain = btn.getAttribute("data-domain") || "all";
-          filters.forEach(function (b) {
-            b.classList.toggle("is-active", b === btn);
-          });
-          apply();
-        });
-      });
-
-      // "/" focuses search (when not already in an input)
-      document.addEventListener("keydown", function (e) {
-        if (e.key === "/" && document.activeElement !== search && document.activeElement.tagName !== "INPUT") {
-          e.preventDefault();
-          search.focus();
-        }
-      });
-    })();
-  </script>
 
 </body>
 </html>
