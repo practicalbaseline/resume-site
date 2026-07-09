@@ -54,12 +54,12 @@ body {
 .tagline {
   margin: 0;
   font-family: var(--serif);
-  font-size: clamp(1.35rem, 3.6vw, 1.7rem);
+  font-size: clamp(1.2rem, 3.2vw, 1.55rem);
   font-weight: 400;
-  line-height: 1.35;
+  line-height: 1.4;
   color: var(--text);
   letter-spacing: -0.015em;
-  max-width: 26ch;
+  max-width: 34ch;
 }
 
 /* ——— Section headings ——— */
@@ -268,31 +268,35 @@ h2 {
   color: var(--text);
 }
 
-/* ——— Building ——— */
-.projects {
+/* ——— Shared item lists (Building, Capabilities, How I Think) ——— */
+.projects,
+.capabilities,
+.thinking {
   margin-bottom: var(--gap);
 }
 
-.projects h2 {
+.projects h2,
+.capabilities h2,
+.thinking h2 {
   margin-bottom: 1.25rem;
 }
 
-.projects .items {
+.items {
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-.projects .items > li {
+.items > li {
   padding: 1.1rem 0;
   border-top: 1px solid var(--line);
 }
 
-.projects .items > li:first-child {
+.items > li:first-child {
   border-top: 1px solid var(--line-soft);
 }
 
-.projects .item-name {
+.item-name {
   display: block;
   font-size: 0.98rem;
   font-weight: 600;
@@ -301,55 +305,24 @@ h2 {
   color: var(--text);
 }
 
-.projects .item-name a {
+.item-name a {
   color: var(--text);
   text-decoration: none;
   border-bottom: 1px solid transparent;
   transition: color 0.15s ease, border-color 0.15s ease;
 }
 
-.projects .item-name a:hover {
+.item-name a:hover {
   color: var(--accent);
   border-bottom-color: var(--accent-dim);
 }
 
-.projects .item-detail {
+.item-detail {
   display: block;
   margin-top: 0.4rem;
   font-size: 0.9rem;
   color: var(--muted);
   line-height: 1.55;
-}
-
-/* ——— Influences ——— */
-.influences {
-  margin-bottom: var(--gap);
-}
-
-.influences h2 {
-  margin-bottom: 1.1rem;
-}
-
-.influence-list {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.45rem 0.3rem;
-}
-
-.influence-list li {
-  font-size: 0.86rem;
-  color: var(--muted);
-  letter-spacing: 0.01em;
-}
-
-.influence-list li:not(:last-child)::after {
-  content: "·";
-  margin-left: 0.45rem;
-  color: var(--faint);
-  opacity: 0.55;
 }
 
 /* ——— Focus ——— */
@@ -408,7 +381,7 @@ a:focus-visible,
   html { scroll-behavior: auto; }
   .entry summary,
   .entry-chevron,
-  .projects .item-name a {
+  .item-name a {
     transition: none;
   }
 }
