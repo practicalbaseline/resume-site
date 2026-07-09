@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Three.js fairway theater: pure drive, sky purchase order, putt miss, pick up the paper — route into the site."
+    />
+    <title>Fairway Theater — Pure Drive · PO Miss · Routing Slip</title>
+    <link rel="stylesheet" href="css/golf.css" />
+  </head>
+  <body class="golf-page">
+    <div class="file-hint" data-file-hint hidden role="status">
+      Opened via file:// — if the canvas is blank, run
+      <code>python3 -m http.server 8080</code> and open
+      <code>http://localhost:8080/golf.html</code>
+    </div>
+    <div class="load-error" data-load-error hidden role="alert"></div>
+
+    <header class="golf-hud">
+      <div class="golf-hud__brand">
+        <strong>Fairway Theater</strong>
+        <span>tall lanky drive · sky PO · pick up the paper</span>
+      </div>
+      <p class="golf-hud__status" data-golf-status data-phase="tee">
+        Loading simulation…
+      </p>
+      <div class="golf-hud__actions">
+        <button type="button" data-golf-mute class="golf-btn golf-btn--ghost" aria-pressed="false">
+          Mute
+        </button>
+        <button type="button" data-golf-replay class="golf-btn">Replay</button>
+        <a class="golf-btn golf-btn--ghost" href="index.html">Main site</a>
+      </div>
+    </header>
+
+    <div class="golf-stage" data-golf-canvas aria-label="Three.js golf simulation"></div>
+
+    <!-- Opens after pickup — paper-style routing slip -->
+    <div
+      class="routing-slip"
+      data-routing-slip
+      hidden
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="routing-title"
+    >
+      <div class="routing-slip__backdrop" aria-hidden="true"></div>
+      <div class="routing-slip__sheet">
+        <p class="routing-slip__stamp">RECOVERED · BALL DEFLECTED · ROUTE OPEN</p>
+        <p class="routing-slip__eyebrow">Purchase order · in hand</p>
+        <h2 class="routing-slip__title" id="routing-title">
+          You picked up the paper. Where next?
+        </h2>
+        <p class="routing-slip__lede">
+          The purest drive of the day, killed by procurement. The PO is your
+          routing slip — three doors into the rest of the site.
+        </p>
+        <nav class="routing-slip__routes" aria-label="Continue into the site">
+          <a class="route-card route-card--accent" href="index.html" data-route="main">
+            <span class="route-card__code">01 · MAIN</span>
+            <span class="route-card__name">Main site</span>
+            <span class="route-card__hint">Hero, presence, full story</span>
+          </a>
+          <a class="route-card" href="index.html#work" data-route="resume">
+            <span class="route-card__code">02 · RESUME</span>
+            <span class="route-card__name">Resume / signals</span>
+            <span class="route-card__hint">Capabilities & proof, no job timeline</span>
+          </a>
+          <a class="route-card" href="index.html#projects" data-route="projects">
+            <span class="route-card__code">03 · PROJECTS</span>
+            <span class="route-card__name">Projects & builds</span>
+            <span class="route-card__hint">What I’m shipping right now</span>
+          </a>
+        </nav>
+        <div class="routing-slip__footer">
+          <button type="button" class="golf-btn golf-btn--ghost" data-routing-replay>
+            Replay
+          </button>
+          <span class="routing-slip__skip">Press <kbd>R</kbd> to replay</span>
+        </div>
+      </div>
+    </div>
+
+    <footer class="golf-caption">
+      Pure drive down the fairway → putt on line → purchase order falls from the
+      sky → bounce miss → pick up the paper → <em>route into the site</em>.
+      Click once to enable audio.
+    </footer>
+
+    <script src="js/golf/three.min.js"></script>
+    <script src="js/golf/physics.js"></script>
+    <script src="js/golf/visual.js"></script>
+    <script src="js/golf/audio.js"></script>
+    <script src="js/golf/scene.js"></script>
+  </body>
+</html>
