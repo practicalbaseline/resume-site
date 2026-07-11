@@ -311,3 +311,6 @@ window.addEventListener("resize", () => {
   resizeRenderer(canvas, camera, renderer);
   composer.setSize(canvas.clientWidth, canvas.clientHeight);
 });
+
+const DEPLOY_BUILD = "1783748221-prod";
+if (typeof document !== "undefined") document.documentElement.dataset.build = typeof DEPLOY_BUILD !== "undefined" ? DEPLOY_BUILD : "1";
