@@ -1,229 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Jake Gray — capabilities, how I think, principles I agree with, and what I'm building.">
-  <link rel="canonical" href="https://www.itsjakegray.com/">
-  <title>Jake Gray</title>
-  <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="A short film about lasers that build, heal, and connect — then the principles and parts behind the machine."
+    />
+    <link rel="canonical" href="https://www.itsjakegray.com/" />
+    <title>Jake Gray — Laser</title>
+    <link rel="stylesheet" href="/src/styles/main.css" />
+  </head>
+  <body class="mode-prologue">
+    <div id="app">
+      <canvas id="c" aria-label="Cinematic laser scene, then interactive cavity lab"></canvas>
 
-  <header class="site-header">
-    <h1 class="name">Jake Gray</h1>
-    <p class="tagline">Capabilities, thinking, principles, and active builds — for peers who want signal, not noise.</p>
-  </header>
+      <div id="letterbox-top" class="letterbox top" aria-hidden="true"></div>
+      <div id="letterbox-bottom" class="letterbox bottom" aria-hidden="true"></div>
 
-  <!-- 1. Active projects -->
-  <section class="projects" aria-labelledby="projects-heading">
-    <h2 id="projects-heading">Building</h2>
-    <ul class="items">
-      <li>
-        <span class="item-name"><a href="http://www.sweatygm.com">SweatyGM.com</a></span>
-        <span class="item-detail">Eye speed for GM-level target transitions.</span>
-      </li>
-      <li>
-        <span class="item-name">Stage Design Tool</span>
-        <span class="item-detail">Full stage layouts with coordinates for every target and fault — exported to setup crews.</span>
-      </li>
-    </ul>
-  </section>
+      <div
+        id="prologue"
+        class="prologue"
+        role="region"
+        aria-label="Opening sequence"
+        aria-hidden="false"
+      >
+        <p class="prologue-kicker" id="prologue-kicker"></p>
+        <p class="prologue-line enter" id="prologue-line"></p>
+        <div class="prologue-actions">
+          <button type="button" id="prologue-skip" class="nav-btn prologue-skip">Skip</button>
+          <button type="button" id="prologue-cta" class="nav-btn prologue-cta" hidden>
+            Enter the lab
+          </button>
+        </div>
+      </div>
 
-  <!-- 2. Skillsets -->
-  <section class="capabilities" aria-labelledby="capabilities-heading">
-    <h2 id="capabilities-heading">Capabilities</h2>
-    <ul class="items">
-      <li>
-        <span class="item-name">Performance simulation</span>
-        <span class="item-detail">Model human timing limits; visualize what speed actually requires.</span>
-      </li>
-      <li>
-        <span class="item-name">Spatial coordinate systems</span>
-        <span class="item-detail">Map stages, targets, and fault lines to exportable coordinates.</span>
-      </li>
-      <li>
-        <span class="item-name">Frontend engineering</span>
-        <span class="item-detail">Static, precise interfaces with immediate feedback loops.</span>
-      </li>
-    </ul>
-  </section>
+      <header class="identity lab-ui">
+        <a class="name" href="https://www.itsjakegray.com/">Jake Gray</a>
+      </header>
 
-  <!-- 3. Way of thinking -->
-  <section class="thinking" aria-labelledby="thinking-heading">
-    <h2 id="thinking-heading">How I Think</h2>
-    <ul class="items">
-      <li>
-        <span class="item-name">Build to verify</span>
-        <span class="item-detail">I ship projects to test whether I actually understand something.</span>
-      </li>
-      <li>
-        <span class="item-name">Solve directly</span>
-        <span class="item-detail">Describing a solution isn't solving it.</span>
-      </li>
-      <li>
-        <span class="item-name">First sources, then synthesis</span>
-        <span class="item-detail">Depth in one domain transfers to hard problems in another.</span>
-      </li>
-      <li>
-        <span class="item-name">Honest feedback loops</span>
-        <span class="item-detail">Precision requires immediate, truthful signal — not delayed reassurance.</span>
-      </li>
-    </ul>
-  </section>
+      <aside class="story lab-ui" aria-live="polite">
+        <p class="story-kicker">Principles</p>
+        <h1 class="story-title" id="story-title">Fabry–Pérot cavity</h1>
+        <p class="story-formula" id="story-formula">
+          Two mirrors on an optic axis. Mode volume between high reflector and output coupler.
+        </p>
+        <nav class="story-nav" aria-label="Principle steps">
+          <button type="button" id="prev-step" class="nav-btn">Back</button>
+          <ol class="step-dots" id="step-dots"></ol>
+          <button type="button" id="next-step" class="nav-btn">Next</button>
+        </nav>
+      </aside>
 
-  <!-- 4. Agreed principles / laws -->
-  <section class="canon" aria-labelledby="principles-heading">
-    <div class="canon-head">
-      <h2 id="principles-heading">Principles</h2>
-      <p class="canon-count" aria-hidden="true">08</p>
+      <aside class="sandbox lab-ui" aria-label="Laser controls">
+        <p class="sandbox-label">Parameters</p>
+        <label class="control">
+          <span>W<sub>p</sub></span>
+          <input type="range" id="pump" min="0" max="1" step="0.01" value="0" />
+        </label>
+        <label class="control">
+          <span>Align</span>
+          <input type="range" id="alignment" min="0" max="1" step="0.01" value="1" />
+        </label>
+        <label class="control">
+          <span>T<sub>oc</sub></span>
+          <input type="range" id="leak" min="0.02" max="0.45" step="0.01" value="0.12" />
+        </label>
+        <p class="status" id="status-line">g ≤ loss · below threshold</p>
+        <div class="sandbox-actions">
+          <button type="button" id="auto-align" class="nav-btn">Align</button>
+          <button type="button" id="reset-sim" class="nav-btn">Reset</button>
+        </div>
+      </aside>
+
+      <aside
+        id="schematic"
+        class="schematic"
+        hidden
+        aria-hidden="true"
+        role="dialog"
+        aria-labelledby="schematic-title"
+      >
+        <div class="schematic-head">
+          <p class="schematic-kicker">Schematic</p>
+          <button type="button" id="schematic-close" class="nav-btn" aria-label="Close schematic">
+            Close
+          </button>
+        </div>
+        <h2 class="schematic-title" id="schematic-title"></h2>
+        <div id="schematic-svg" class="schematic-svg-host"></div>
+        <p class="schematic-role" id="schematic-role"></p>
+        <p class="schematic-principle" id="schematic-principle"></p>
+        <p class="materials-label">Manufacture</p>
+        <p class="schematic-manufacture" id="schematic-manufacture"></p>
+        <p class="materials-label">Materials</p>
+        <ul class="materials" id="schematic-materials"></ul>
+      </aside>
+
+      <aside id="industry-panel" class="teach-panel industry lab-ui" aria-label="Industry laser use"></aside>
+      <aside
+        id="manufacture-panel"
+        class="teach-panel manufacture lab-ui"
+        aria-label="Laser manufacture basics"
+      ></aside>
+
+      <p class="hint lab-ui" id="hint">click part · ← → principles · drag orbit · Space pause</p>
     </div>
-
-    <p class="canon-hint">Open an entry to read the full statement.</p>
-
-    <div class="index" role="list">
-
-      <details class="entry" role="listitem" id="clarkes-laws">
-        <summary>
-          <span class="entry-id">01</span>
-          <span class="entry-title">Clarke’s Three Laws</span>
-          <span class="entry-domain">Technology</span>
-          <span class="entry-chevron" aria-hidden="true"></span>
-        </summary>
-        <div class="entry-body">
-          <p class="entry-source">Arthur C. Clarke</p>
-          <ol class="laws">
-            <li>
-              <span class="law-id">I</span>
-              <p>When a distinguished but elderly scientist states that something is possible, he is almost certainly right. When he states that something is impossible, he is very probably wrong.</p>
-            </li>
-            <li>
-              <span class="law-id">II</span>
-              <p>The only way of discovering the limits of the possible is to venture a little way past them into the impossible.</p>
-            </li>
-            <li>
-              <span class="law-id">III</span>
-              <p>Any sufficiently advanced technology is indistinguishable from magic.</p>
-            </li>
-          </ol>
-          <p class="entry-gloss">Control flow for innovation: discount premature impossibility, push past the edge, then build what once looked like magic.</p>
-        </div>
-      </details>
-
-      <details class="entry" role="listitem" id="self-education">
-        <summary>
-          <span class="entry-id">02</span>
-          <span class="entry-title">Self-Education</span>
-          <span class="entry-domain">Learning</span>
-          <span class="entry-chevron" aria-hidden="true"></span>
-        </summary>
-        <div class="entry-body">
-          <p class="entry-source">Isaac Asimov</p>
-          <blockquote class="entry-statement">
-            Self-education is, I firmly believe, the only kind of education there is.
-          </blockquote>
-          <p class="entry-gloss">Formal instruction is scaffolding. Understanding is built alone, by sustained attention to first sources and hard problems.</p>
-        </div>
-      </details>
-
-      <details class="entry" role="listitem" id="knowledge-problem">
-        <summary>
-          <span class="entry-id">03</span>
-          <span class="entry-title">The Knowledge Problem</span>
-          <span class="entry-domain">Knowledge</span>
-          <span class="entry-chevron" aria-hidden="true"></span>
-        </summary>
-        <div class="entry-body">
-          <p class="entry-source">Friedrich Hayek</p>
-          <blockquote class="entry-statement">
-            The knowledge of the circumstances of which we must make use never exists in concentrated or integrated form, but solely as the dispersed bits of incomplete and frequently contradictory knowledge which all the separate individuals possess.
-          </blockquote>
-          <p class="entry-gloss">No planner holds the full map. Route decisions to people with local information; let prices, feedback, and selection do the rest.</p>
-        </div>
-      </details>
-
-      <details class="entry" role="listitem" id="first-principles">
-        <summary>
-          <span class="entry-id">04</span>
-          <span class="entry-title">First Principles</span>
-          <span class="entry-domain">Reasoning</span>
-          <span class="entry-chevron" aria-hidden="true"></span>
-        </summary>
-        <div class="entry-body">
-          <p class="entry-source">Classical</p>
-          <blockquote class="entry-statement">
-            Reason from fundamental truths you can verify, not from analogy to what already exists.
-          </blockquote>
-          <p class="entry-gloss">Analogy is a shortcut; first principles are the ground. Break a problem into what must be true, then rebuild upward.</p>
-        </div>
-      </details>
-
-      <details class="entry" role="listitem" id="occams-razor">
-        <summary>
-          <span class="entry-id">05</span>
-          <span class="entry-title">Occam’s Razor</span>
-          <span class="entry-domain">Reasoning</span>
-          <span class="entry-chevron" aria-hidden="true"></span>
-        </summary>
-        <div class="entry-body">
-          <p class="entry-source">William of Ockham</p>
-          <blockquote class="entry-statement">
-            Entities should not be multiplied beyond necessity.
-          </blockquote>
-          <p class="entry-gloss">Prefer the explanation that accounts for the facts with the fewest free parameters. Complexity is a cost — pay it only when the data demand it.</p>
-        </div>
-      </details>
-
-      <details class="entry" role="listitem" id="spontaneous-order">
-        <summary>
-          <span class="entry-id">06</span>
-          <span class="entry-title">Spontaneous Order</span>
-          <span class="entry-domain">Order</span>
-          <span class="entry-chevron" aria-hidden="true"></span>
-        </summary>
-        <div class="entry-body">
-          <p class="entry-source">Hayek · Smith lineage</p>
-          <blockquote class="entry-statement">
-            Complex order can emerge from simple rules followed by many agents — without a central designer holding the whole design in mind.
-          </blockquote>
-          <p class="entry-gloss">Markets, language, common law, and open protocols share this shape: local rules, global pattern. Design the rules; don’t micromanage the outcome.</p>
-        </div>
-      </details>
-
-      <details class="entry" role="listitem" id="voluntary-exchange">
-        <summary>
-          <span class="entry-id">07</span>
-          <span class="entry-title">Voluntary Exchange</span>
-          <span class="entry-domain">Exchange</span>
-          <span class="entry-chevron" aria-hidden="true"></span>
-        </summary>
-        <div class="entry-body">
-          <p class="entry-source">Milton Friedman</p>
-          <blockquote class="entry-statement">
-            The most important single central fact about a free market is that no exchange takes place unless both parties benefit.
-          </blockquote>
-          <p class="entry-gloss">Consent plus mutual gain is the basic unit of peaceful coordination. Coercion is the exception that must justify itself — not the default.</p>
-        </div>
-      </details>
-
-      <details class="entry" role="listitem" id="second-law">
-        <summary>
-          <span class="entry-id">08</span>
-          <span class="entry-title">The Second Law</span>
-          <span class="entry-domain">Science</span>
-          <span class="entry-chevron" aria-hidden="true"></span>
-        </summary>
-        <div class="entry-body">
-          <p class="entry-source">Thermodynamics</p>
-          <blockquote class="entry-statement">
-            Entropy of an isolated system never decreases. Order requires work.
-          </blockquote>
-          <p class="entry-gloss">Decay is free; structure is paid for. Every durable system — a machine, a company, a skill — is a continuous fight against disorder.</p>
-        </div>
-      </details>
-
-    </div>
-  </section>
-
-</body>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
 </html>
