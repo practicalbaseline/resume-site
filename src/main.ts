@@ -43,6 +43,10 @@ function tagsHtml(tags?: string[]): string {
     .join("")}</div>`;
 }
 
+function normalizeText(s: string): string {
+  return s.replace(/\s+/g, " ").trim();
+}
+
 function entryHtml(n: GraphNode): string {
   const asQuote = n.kind === "quote";
 
@@ -53,18 +57,32 @@ function entryHtml(n: GraphNode): string {
     .filter(Boolean)
     .join("");
 
-  const body = n.body ? bodyParagraphs(n.body, asQuote) : "";
+  // Closed row: short blurb in <summary>. Expanded: body only (summary is
+  // hidden via CSS) so the same string is never shown twice.
+  const summaryText = n.summary?.trim() ?? "";
+  const bodyText = n.body?.trim() ?? "";
+  const expandedText =
+    bodyText &&
+    summaryText &&
+    normalizeText(bodyText) === normalizeText(summaryText)
+      ? "" // redundant with summary — expand shows tags/link only
+      : bodyText || "";
+
+  // If body is empty or identical to summary, keep summary visible when open
+  // (CSS only hides summary when expanded content exists).
+  const hasDistinctBody = Boolean(expandedText);
+  const body = hasDistinctBody ? bodyParagraphs(expandedText, asQuote) : "";
 
   return `
-    <details class="entry" id="${escapeHtml(n.id)}">
+    <details class="entry${hasDistinctBody ? " has-body" : ""}" id="${escapeHtml(n.id)}">
       <summary>
         <div class="entry-title-row">
           <span class="entry-title">${escapeHtml(n.title)}</span>
         </div>
         <div class="entry-meta">${meta}</div>
         ${
-          n.summary
-            ? `<p class="entry-summary">${escapeHtml(n.summary)}</p>`
+          summaryText
+            ? `<p class="entry-summary">${escapeHtml(summaryText)}</p>`
             : ""
         }
       </summary>
@@ -123,7 +141,11 @@ function render(): void {
   root.innerHTML = `
     <header class="site-header">
       <h1 class="name">${escapeHtml(hub.title)}</h1>
-      <p class="role">${escapeHtml(hub.summary ?? "")}</p>
+      ${
+        hub.summary
+          ? `<p class="role">${escapeHtml(hub.summary)}</p>`
+          : ""
+      }
       <nav class="site-nav" aria-label="Sections">${nav}</nav>
     </header>
     <main>

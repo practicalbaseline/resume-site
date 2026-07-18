@@ -243,6 +243,11 @@ a:hover {
   background: linear-gradient(180deg, var(--accent-soft), transparent 8rem);
 }
 
+/* Avoid doubling: when expanded content is distinct, hide the closed blurb */
+.entry.has-body[open] > summary .entry-summary {
+  display: none;
+}
+
 .entry summary {
   list-style: none;
   display: grid;

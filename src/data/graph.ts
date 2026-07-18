@@ -7,8 +7,6 @@ const hub: GraphNode = {
   id: HUB_ID,
   kind: "hub",
   title: "Jake Gray",
-  summary:
-    "Technology Sales Professional Solving Client Problems Through Engineering",
   body: "Projects, quotes, library, writing, and active research.",
 };
 
@@ -23,13 +21,13 @@ const trunks: GraphNode[] = TRUNK_ORDER.map((id) => ({
 function trunkSummary(id: TrunkId): string {
   switch (id) {
     case "projects":
-      return "What I ship — simulations, tools, and teaching demos.";
+      return "I learn by doing. Here are my attempts at doing:";
     case "quotes":
-      return "Quotes that make me stop and think, or are foundational to my approach.";
+      return "Quotes that make me stop and think:";
     case "library":
       return "Coming Soon";
     case "writing":
-      return "Essays and notes. Named posts appear here when they exist.";
+      return "Useful things I learned along the way in life.";
     case "research":
       return "Active questions — and the reason each one matters.";
   }
@@ -44,23 +42,10 @@ const leaves: GraphNode[] = [
     trunk: "projects",
     title: "SweatyGM / Dry-Fire Trainer",
     summary:
-      "This tool is for Competitive Shooters to train their vision with key fundamentals. The goal is to simulate fundamental drills and increase eye-speed from home.",
-    body: [
-      "This tool is for Competitive Shooters to train their vision with key fundamentals. The goal is to simulate fundamental drills and increase eye-speed from home.",
-    ].join("\n"),
+      "This is a gamified version of dry-fire. The goal is to increase eye speed inbetween transitions, and practice key fundamentals for competitive shooters.",
     href: "https://www.sweatygm.com",
     tags: ["simulation", "performance", "frontend"],
     status: "live",
-  },
-  {
-    id: "project-economic-school-of-brass",
-    kind: "project",
-    trunk: "projects",
-    title: "Economic School of Brass",
-    summary: "Coming Soon — August 2026",
-    body: "Coming soon. Target launch: August 2026.",
-    status: "idea",
-    tags: ["coming-soon"],
   },
   // —— 2. Quotes ——
   {
@@ -92,64 +77,6 @@ const leaves: GraphNode[] = [
       "Formal instruction is scaffolding. Understanding is built by sustained attention to first sources and hard problems.",
     ].join("\n"),
     tags: ["learning"],
-  },
-  {
-    id: "quote-knowledge-problem",
-    kind: "quote",
-    trunk: "quotes",
-    title: "Dispersed Knowledge",
-    source: "Friedrich Hayek",
-    summary:
-      "The knowledge of the circumstances of which we must make use never exists in concentrated or integrated form…",
-    body: [
-      "The knowledge of the circumstances of which we must make use never exists in concentrated or integrated form, but solely as the dispersed bits of incomplete and frequently contradictory knowledge which all the separate individuals possess.",
-      "",
-      "No planner holds the full map.",
-    ].join("\n"),
-    tags: ["knowledge"],
-  },
-  {
-    id: "quote-voluntary-exchange",
-    kind: "quote",
-    trunk: "quotes",
-    title: "Voluntary Exchange",
-    source: "Milton Friedman",
-    summary:
-      "No exchange takes place unless both parties benefit.",
-    body: [
-      "The most important single central fact about a free market is that no exchange takes place unless both parties benefit.",
-      "",
-      "Consent plus mutual gain is the basic unit of peaceful coordination.",
-    ].join("\n"),
-    tags: ["exchange"],
-  },
-  {
-    id: "quote-second-law",
-    kind: "quote",
-    trunk: "quotes",
-    title: "The Second Law",
-    source: "Thermodynamics",
-    summary: "Entropy of an isolated system never decreases. Order requires work.",
-    body: [
-      "Entropy of an isolated system never decreases. Order requires work.",
-      "",
-      "Decay is free; structure is paid for.",
-    ].join("\n"),
-    tags: ["science"],
-  },
-  {
-    id: "quote-occam",
-    kind: "quote",
-    trunk: "quotes",
-    title: "Occam’s Razor",
-    source: "William of Ockham",
-    summary: "Entities should not be multiplied beyond necessity.",
-    body: [
-      "Entities should not be multiplied beyond necessity.",
-      "",
-      "Prefer the explanation that accounts for the facts with the fewest free parameters.",
-    ].join("\n"),
-    tags: ["reasoning"],
   },
 
   // —— 3. Library: empty (Coming Soon) ——

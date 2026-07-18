@@ -9,13 +9,11 @@ import {
 import { TRUNK_LABELS, TRUNK_ORDER } from "./types";
 
 describe("GRAPH", () => {
-  it("has a hub with the approved one-line role", () => {
+  it("has a hub with name only (no bio line)", () => {
     const hub = getNode(HUB_ID);
     expect(hub?.kind).toBe("hub");
     expect(hub?.title).toBe("Jake Gray");
-    expect(hub?.summary).toBe(
-      "Technology Sales Professional Solving Client Problems Through Engineering",
-    );
+    expect(hub?.summary).toBeUndefined();
   });
 
   it("orders trunks: projects, quotes, library, writing, research", () => {
