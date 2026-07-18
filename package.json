@@ -11,6 +11,7 @@
     "test:watch": "vitest"
   },
   "devDependencies": {
+    "playwright": "^1.49.1",
     "typescript": "~5.7.2",
     "vite": "^6.0.7",
     "vitest": "^3.0.5"

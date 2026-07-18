@@ -137,11 +137,24 @@ function render(): void {
   applyHash();
 }
 
+function prefersReducedMotion(): boolean {
+  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+}
+
+function scrollToEl(el: Element): void {
+  // iOS Safari: smooth scroll is fine on modern versions; respect reduced motion
+  const behavior: ScrollBehavior = prefersReducedMotion() ? "auto" : "smooth";
+  // rAF waits a paint so layout/safe-area is stable after opening <details>
+  requestAnimationFrame(() => {
+    el.scrollIntoView({ behavior, block: "start" });
+  });
+}
+
 function applyHash(): void {
   const raw = location.hash.replace(/^#/, "");
   if (!raw) return;
 
-  // Support #section-projects and #project-laser-lab
+  // Support #section-projects and #project-sweatygm
   const el =
     document.getElementById(raw) ??
     document.getElementById(`section-${raw}`);
@@ -150,11 +163,27 @@ function applyHash(): void {
   if (el instanceof HTMLDetailsElement) {
     el.open = true;
     el.classList.add("is-target");
-    el.scrollIntoView({ behavior: "smooth", block: "nearest" });
-  } else {
-    el.scrollIntoView({ behavior: "smooth", block: "start" });
   }
+  scrollToEl(el);
+}
+
+/** Improve iOS <details> reliability: ensure summary taps toggle cleanly. */
+function bindDetailsTouch(): void {
+  document.querySelectorAll<HTMLDetailsElement>("details.entry").forEach((d) => {
+    const summary = d.querySelector("summary");
+    if (!summary) return;
+    // Prevent accidental text selection delaying the first tap on iOS
+    summary.addEventListener(
+      "click",
+      () => {
+        // Let native toggle run; clear hash target styling when user interacts
+        d.classList.remove("is-target");
+      },
+      { passive: true },
+    );
+  });
 }
 
 window.addEventListener("hashchange", applyHash);
 render();
+bindDetailsTouch();

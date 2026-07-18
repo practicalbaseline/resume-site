@@ -10,9 +10,18 @@
   --accent-soft: rgba(0, 240, 255, 0.08);
   --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
     "Courier New", monospace;
-  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman",
+    serif;
   --measure: 42rem;
   --page: 52rem;
+  /* iOS safe areas (notch / home indicator) */
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left: env(safe-area-inset-left, 0px);
+  --pad-x: 1.5rem;
+  --pad-y: 3.5rem;
+  --touch: 44px;
 }
 
 *,
@@ -23,18 +32,27 @@
 
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  /* Avoid rubber-band revealing wrong color */
+  background-color: var(--bg);
 }
 
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
+
+  .entry-title {
+    transition: none;
+  }
 }
 
 body {
   margin: 0;
   min-height: 100%;
-  font: 15px/1.65 var(--mono);
+  min-height: 100dvh;
+  font: 16px/1.65 var(--mono);
   color: var(--text);
   background-color: var(--bg);
   background-image:
@@ -43,11 +61,16 @@ body {
   background-size: 32px 32px;
   letter-spacing: 0.01em;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  /* Kill grey tap flash on iOS */
+  -webkit-tap-highlight-color: transparent;
 }
 
 a {
   color: var(--accent);
   text-decoration: none;
+  -webkit-touch-callout: default;
 }
 
 a:hover {
@@ -56,10 +79,48 @@ a:hover {
   text-underline-offset: 3px;
 }
 
+/* Prefer active feedback on touch devices */
+@media (hover: none) and (pointer: coarse) {
+  a:hover {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  a:active {
+    color: var(--text);
+    opacity: 0.85;
+  }
+
+  .entry summary:hover .entry-title {
+    color: var(--text);
+  }
+
+  .entry summary:active .entry-title {
+    color: var(--accent);
+  }
+
+  .site-nav a:hover {
+    color: var(--faint);
+    border-color: transparent;
+    background: transparent;
+  }
+
+  .site-nav a:active {
+    color: var(--accent);
+    border-color: var(--line);
+    background: var(--accent-soft);
+  }
+}
+
 #app {
   max-width: var(--page);
+  width: 100%;
   margin: 0 auto;
-  padding: 3.5rem 1.5rem 5rem;
+  padding:
+    max(var(--pad-y), calc(var(--safe-top) + 1.25rem))
+    max(var(--pad-x), calc(var(--safe-right) + 1rem))
+    max(5rem, calc(var(--safe-bottom) + 3rem))
+    max(var(--pad-x), calc(var(--safe-left) + 1rem));
 }
 
 /* —— Header —— */
@@ -75,6 +136,8 @@ a:hover {
   font-weight: 600;
   letter-spacing: -0.02em;
   color: var(--text);
+  line-height: 1.25;
+  overflow-wrap: anywhere;
 }
 
 .site-header .role {
@@ -83,24 +146,35 @@ a:hover {
   font-size: 0.95rem;
   line-height: 1.55;
   color: var(--muted);
+  overflow-wrap: break-word;
 }
 
 .site-nav {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.35rem 0.5rem;
+  gap: 0.4rem;
   margin-top: 1.5rem;
+  /* Keep chips tappable without awkward wrap crush */
+  margin-left: -0.15rem;
 }
 
 .site-nav a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--touch);
+  min-width: 3rem;
+  padding: 0.5rem 0.75rem;
   font-size: 0.72rem;
   font-weight: 600;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--faint);
-  padding: 0.35rem 0.55rem;
   border: 1px solid transparent;
-  border-radius: 3px;
+  border-radius: 6px;
+  touch-action: manipulation;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 .site-nav a:hover {
@@ -113,7 +187,8 @@ a:hover {
 /* —— Sections —— */
 .trunk {
   margin-bottom: 3.25rem;
-  scroll-margin-top: 1.5rem;
+  /* Clear iOS sticky URL bar / notch when jumping to sections */
+  scroll-margin-top: max(1.5rem, calc(var(--safe-top) + 1rem));
 }
 
 .trunk-head {
@@ -131,19 +206,24 @@ a:hover {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--accent);
+  line-height: 1.35;
+  overflow-wrap: anywhere;
 }
 
 .trunk-count {
   font-size: 0.72rem;
   color: var(--faint);
   font-variant-numeric: tabular-nums;
+  flex-shrink: 0;
 }
 
 .trunk-lead {
   margin: 0 0 1.25rem;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   color: var(--faint);
   max-width: 34rem;
+  line-height: 1.55;
+  overflow-wrap: break-word;
 }
 
 /* —— Entries —— */
@@ -156,6 +236,7 @@ a:hover {
 
 .entry {
   border-bottom: 1px solid var(--line);
+  scroll-margin-top: max(1rem, calc(var(--safe-top) + 0.75rem));
 }
 
 .entry[open] {
@@ -166,14 +247,23 @@ a:hover {
   list-style: none;
   display: grid;
   grid-template-columns: 1fr auto;
-  gap: 0.35rem 1rem;
+  gap: 0.4rem 1rem;
   align-items: baseline;
+  /* Generous vertical hit area for thumbs */
   padding: 1rem 0.15rem;
+  min-height: var(--touch);
   cursor: pointer;
+  -webkit-user-select: none;
   user-select: none;
+  touch-action: manipulation;
 }
 
 .entry summary::-webkit-details-marker {
+  display: none;
+}
+
+.entry summary::marker {
+  content: "";
   display: none;
 }
 
@@ -190,10 +280,12 @@ a:hover {
 }
 
 .entry-title {
-  font-size: 0.95rem;
+  font-size: 1rem;
   font-weight: 500;
   color: var(--text);
   transition: color 0.12s ease;
+  overflow-wrap: anywhere;
+  line-height: 1.35;
 }
 
 .entry-meta {
@@ -205,16 +297,20 @@ a:hover {
 }
 
 .entry-source {
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   color: var(--faint);
+  overflow-wrap: anywhere;
+  text-align: right;
 }
 
 .entry-summary {
   grid-column: 1 / -1;
   margin: 0;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   color: var(--muted);
   max-width: var(--measure);
+  line-height: 1.55;
+  overflow-wrap: break-word;
 }
 
 .entry-body {
@@ -224,19 +320,19 @@ a:hover {
 
 .entry-body p {
   margin: 0 0 0.75rem;
-  font-size: 0.88rem;
+  font-size: 0.95rem;
   color: var(--muted);
   line-height: 1.7;
+  overflow-wrap: break-word;
 }
 
 .entry-body p:last-child {
   margin-bottom: 0;
 }
 
-/* Principles: statement in serif when it reads as a quote */
 .entry-body.quote-body p:first-of-type {
   font-family: var(--serif);
-  font-size: 1.02rem;
+  font-size: 1.05rem;
   line-height: 1.55;
   color: var(--text);
   font-style: italic;
@@ -251,33 +347,49 @@ a:hover {
 }
 
 .entry-link {
-  font-size: 0.8rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--touch);
+  padding: 0.5rem 0.85rem;
+  font-size: 0.9rem;
   font-weight: 500;
+  border: 1px solid rgba(0, 240, 255, 0.35);
+  border-radius: 6px;
+  background: var(--accent-soft);
+  touch-action: manipulation;
+  text-decoration: none;
+}
+
+.entry-link:hover {
+  color: var(--text);
+  text-decoration: none;
+  border-color: var(--accent);
 }
 
 .tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.3rem;
+  gap: 0.35rem;
   margin-top: 0.85rem;
 }
 
 .tag {
-  font-size: 0.62rem;
+  font-size: 0.68rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--faint);
   border: 1px solid var(--line);
-  padding: 0.12rem 0.4rem;
-  border-radius: 2px;
+  padding: 0.25rem 0.45rem;
+  border-radius: 3px;
 }
 
 .badge {
-  font-size: 0.62rem;
+  font-size: 0.68rem;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  padding: 0.12rem 0.4rem;
-  border-radius: 2px;
+  padding: 0.2rem 0.45rem;
+  border-radius: 3px;
   border: 1px solid var(--line);
   color: var(--faint);
   white-space: nowrap;
@@ -304,7 +416,7 @@ a:hover {
   padding: 1rem 0.15rem;
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   color: var(--faint);
 }
 
@@ -313,8 +425,10 @@ a:hover {
   margin-top: 3rem;
   padding-top: 1.25rem;
   border-top: 1px solid var(--line);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   color: var(--faint);
+  line-height: 1.5;
+  padding-bottom: max(0.5rem, var(--safe-bottom));
 }
 
 /* —— Target highlight from hash —— */
@@ -325,21 +439,98 @@ a:hover {
   border-radius: 2px;
 }
 
+/* —— Phone / small tablet —— */
 @media (max-width: 640px) {
+  :root {
+    --pad-x: 1.1rem;
+    --pad-y: 1.75rem;
+  }
+
   #app {
-    padding: 2rem 1.1rem 3.5rem;
+    padding:
+      max(1.75rem, calc(var(--safe-top) + 1rem))
+      max(1.1rem, calc(var(--safe-right) + 0.85rem))
+      max(3.5rem, calc(var(--safe-bottom) + 2.25rem))
+      max(1.1rem, calc(var(--safe-left) + 0.85rem));
   }
 
   .site-header {
+    margin-bottom: 2.25rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .site-header .name {
+    font-size: 1.4rem;
+  }
+
+  .site-header .role {
+    font-size: 0.95rem;
+  }
+
+  .site-nav {
+    gap: 0.35rem;
+  }
+
+  .site-nav a {
+    font-size: 0.7rem;
+    padding: 0.55rem 0.7rem;
+  }
+
+  .trunk {
     margin-bottom: 2.5rem;
+  }
+
+  .trunk-head h2 {
+    font-size: 0.8rem;
+    /* Long research title needs room on narrow screens */
+    max-width: 85%;
   }
 
   .entry summary {
     grid-template-columns: 1fr;
-    gap: 0.35rem;
+    gap: 0.4rem;
+    padding: 1.05rem 0.1rem;
   }
 
   .entry-meta {
     justify-content: flex-start;
+  }
+
+  .entry-source {
+    text-align: left;
+  }
+
+  .entry-title {
+    font-size: 1.02rem;
+  }
+
+  .entry-summary,
+  .trunk-lead {
+    font-size: 0.92rem;
+  }
+
+  .entry-body p {
+    font-size: 0.95rem;
+  }
+
+  .entry-body.quote-body p:first-of-type {
+    font-size: 1.08rem;
+  }
+
+  .entry-link {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* Very small phones */
+@media (max-width: 380px) {
+  .site-header .name {
+    font-size: 1.25rem;
+  }
+
+  .site-nav a {
+    flex: 1 1 auto;
+    min-width: calc(33% - 0.35rem);
   }
 }
