@@ -5,107 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="A short film about lasers that build, heal, and connect — then the principles and parts behind the machine."
+      content="Jake Gray — Technology Sales Professional Solving Client Problems Through Engineering. Projects, principles, library, and writing."
     />
     <link rel="canonical" href="https://www.itsjakegray.com/" />
-    <title>Jake Gray — Laser</title>
+    <title>Jake Gray</title>
     <link rel="stylesheet" href="/src/styles/main.css" />
   </head>
-  <body class="mode-prologue">
-    <div id="app">
-      <canvas id="c" aria-label="Cinematic laser scene, then interactive cavity lab"></canvas>
-
-      <div id="letterbox-top" class="letterbox top" aria-hidden="true"></div>
-      <div id="letterbox-bottom" class="letterbox bottom" aria-hidden="true"></div>
-
-      <div
-        id="prologue"
-        class="prologue"
-        role="region"
-        aria-label="Opening sequence"
-        aria-hidden="false"
-      >
-        <p class="prologue-kicker" id="prologue-kicker"></p>
-        <p class="prologue-line enter" id="prologue-line"></p>
-        <div class="prologue-actions">
-          <button type="button" id="prologue-skip" class="nav-btn prologue-skip">Skip</button>
-          <button type="button" id="prologue-cta" class="nav-btn prologue-cta" hidden>
-            Enter the lab
-          </button>
-        </div>
-      </div>
-
-      <header class="identity lab-ui">
-        <a class="name" href="https://www.itsjakegray.com/">Jake Gray</a>
-      </header>
-
-      <aside class="story lab-ui" aria-live="polite">
-        <p class="story-kicker">Principles</p>
-        <h1 class="story-title" id="story-title">Fabry–Pérot cavity</h1>
-        <p class="story-formula" id="story-formula">
-          Two mirrors on an optic axis. Mode volume between high reflector and output coupler.
-        </p>
-        <nav class="story-nav" aria-label="Principle steps">
-          <button type="button" id="prev-step" class="nav-btn">Back</button>
-          <ol class="step-dots" id="step-dots"></ol>
-          <button type="button" id="next-step" class="nav-btn">Next</button>
-        </nav>
-      </aside>
-
-      <aside class="sandbox lab-ui" aria-label="Laser controls">
-        <p class="sandbox-label">Parameters</p>
-        <label class="control">
-          <span>W<sub>p</sub></span>
-          <input type="range" id="pump" min="0" max="1" step="0.01" value="0" />
-        </label>
-        <label class="control">
-          <span>Align</span>
-          <input type="range" id="alignment" min="0" max="1" step="0.01" value="1" />
-        </label>
-        <label class="control">
-          <span>T<sub>oc</sub></span>
-          <input type="range" id="leak" min="0.02" max="0.45" step="0.01" value="0.12" />
-        </label>
-        <p class="status" id="status-line">g ≤ loss · below threshold</p>
-        <div class="sandbox-actions">
-          <button type="button" id="auto-align" class="nav-btn">Align</button>
-          <button type="button" id="reset-sim" class="nav-btn">Reset</button>
-        </div>
-      </aside>
-
-      <aside
-        id="schematic"
-        class="schematic"
-        hidden
-        aria-hidden="true"
-        role="dialog"
-        aria-labelledby="schematic-title"
-      >
-        <div class="schematic-head">
-          <p class="schematic-kicker">Schematic</p>
-          <button type="button" id="schematic-close" class="nav-btn" aria-label="Close schematic">
-            Close
-          </button>
-        </div>
-        <h2 class="schematic-title" id="schematic-title"></h2>
-        <div id="schematic-svg" class="schematic-svg-host"></div>
-        <p class="schematic-role" id="schematic-role"></p>
-        <p class="schematic-principle" id="schematic-principle"></p>
-        <p class="materials-label">Manufacture</p>
-        <p class="schematic-manufacture" id="schematic-manufacture"></p>
-        <p class="materials-label">Materials</p>
-        <ul class="materials" id="schematic-materials"></ul>
-      </aside>
-
-      <aside id="industry-panel" class="teach-panel industry lab-ui" aria-label="Industry laser use"></aside>
-      <aside
-        id="manufacture-panel"
-        class="teach-panel manufacture lab-ui"
-        aria-label="Laser manufacture basics"
-      ></aside>
-
-      <p class="hint lab-ui" id="hint">click part · ← → principles · drag orbit · Space pause</p>
-    </div>
+  <body>
+    <div id="app"></div>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

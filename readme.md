@@ -1,6 +1,6 @@
-# itsjakegray.com — How a Laser Works
+# itsjakegray.com
 
-Interactive 3D homepage: a giant optical cavity that teaches laser physics from first principles.
+Personal resume for **Jake Gray** — projects, principles, library, and writing.
 
 **https://www.itsjakegray.com**
 
@@ -20,36 +20,26 @@ npm run preview
 
 Static output lands in `dist/` (includes `CNAME` + `.nojekyll` from `public/`).
 
-## Deploy
+## Test
 
-GitHub Actions (`.github/workflows/pages.yml`) builds on push to `main` and deploys to **GitHub Pages**.
+```bash
+npm test
+```
 
-One-time repo setup:
+## Content
 
-1. Settings → Pages → Source: **GitHub Actions**
-2. Custom domain: `www.itsjakegray.com` / `itsjakegray.com`
-3. Enforce HTTPS after DNS checks out
+Edit `src/data/graph.ts`. Four trunks:
 
-### DNS (Cloudflare)
-
-| Type | Name | Value | Proxy |
-|------|------|-------|-------|
-| CNAME | `www` | `practicalbaseline.github.io` | DNS only (grey cloud) |
-
-Optional root apex: follow GitHub Pages apex docs (A records) or redirect root → `www` in Cloudflare.
-
-Legacy helper (branch deploy era): `bash setup-pages.sh`
+| Order | Section | Purpose |
+|-------|---------|---------|
+| 1 | **Projects** | What ships (including Laser Lab as a project overview) |
+| 2 | **Quotes** | Attributed lines worth keeping |
+| 3 | **Library** | Books, papers, talks (links optional) |
+| 4 | **Writing** | Posts when they exist |
+| 5 | **Things I'm Researching (And Why)** | Active questions with reasons |
 
 ## Stack
 
 - Vite + TypeScript
-- three.js (WebGL cavity, bloom, particles)
-- Pedagogical rate model in `src/sim/laserModel.ts` (not a full Maxwell–Bloch solver)
-
-## Controls
-
-- **Story** — Back / Next or `←` `→`
-- **Sandbox** — Pump, alignment, output leak
-- **Orbit** — drag canvas
-- **Space** — pause simulation
-- **Why (physics)** — expert-depth captions
+- Static HTML rendered from a typed content model
+- GitHub Pages via `dist/`

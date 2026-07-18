@@ -10,11 +10,9 @@ export default defineConfig({
     sourcemap: true,
     rollupOptions: {
       output: {
-        // Stable-ish names with hash; prefix avoids Cloudflare caching a prior 404
-        // on generic /assets/index-*.js during first Pages publish.
-        entryFileNames: "assets/laser-[hash].js",
-        chunkFileNames: "assets/laser-[hash].js",
-        assetFileNames: "assets/laser-[hash][extname]",
+        entryFileNames: "assets/site-[hash].js",
+        chunkFileNames: "assets/site-[hash].js",
+        assetFileNames: "assets/site-[hash][extname]",
       },
     },
   },
