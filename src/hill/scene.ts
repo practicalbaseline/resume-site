@@ -1,3 +1,4 @@
+import { HILL_MARKS, marksHtml } from "./marks";
 import { farRidge, hash, height, normal, slope, tangent } from "./terrain";
 
 const R = 1;
@@ -49,6 +50,7 @@ export function startHill(root: HTMLElement): () => void {
     <div class="hill-stage">
       <canvas class="hill-canvas" aria-hidden="true"></canvas>
       <button type="button" class="hill-hop" aria-label="Hop"></button>
+      ${marksHtml(HILL_MARKS)}
     </div>
   `;
 
