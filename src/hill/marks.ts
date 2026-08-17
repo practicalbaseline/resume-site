@@ -1,20 +1,18 @@
 export type HillMark = {
   label: string;
   href: string;
-  tilt: number;
 };
 
-/** Trail tags in the dirt. Add a row to put another project at the bottom. */
+/** Other projects listed under the hill. Add a row to put another link there. */
 export const HILL_MARKS: HillMark[] = [
   {
-    label: "sweatygm.com",
+    label: "SweatyGM.com",
     href: "https://sweatygm.com",
-    tilt: -1.6,
   },
 ];
 
 export function marksHtml(marks: HillMark[]): string {
-  const tags = marks
+  const links = marks
     .map(
       (m) => `
       <a
@@ -22,15 +20,15 @@ export function marksHtml(marks: HillMark[]): string {
         href="${escapeAttr(m.href)}"
         target="_blank"
         rel="noopener noreferrer"
-        style="--tilt: ${m.tilt}deg"
-      >
-        <span class="hill-mark-stake" aria-hidden="true"></span>
-        <span class="hill-mark-plate">${escapeText(m.label)}</span>
-      </a>`,
+      >${escapeText(m.label)}</a>`,
     )
     .join("");
 
-  return `<nav class="hill-marks" aria-label="Projects">${tags}</nav>`;
+  return `
+    <nav class="hill-marks" aria-label="Other projects">
+      <p class="hill-marks-kicker">Other Projects:</p>
+      <div class="hill-marks-list">${links}</div>
+    </nav>`;
 }
 
 function escapeAttr(s: string): string {
