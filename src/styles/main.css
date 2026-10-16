@@ -1,5 +1,5 @@
 :root {
-  --bg: #1d2a44;
+  --bg: #7eafd6;
   --safe-top: env(safe-area-inset-top, 0px);
   --safe-right: env(safe-area-inset-right, 0px);
   --safe-bottom: env(safe-area-inset-bottom, 0px);
@@ -41,86 +41,81 @@ body {
   width: 100%;
   height: 100%;
   min-height: 100dvh;
+  background: linear-gradient(#6ea8d4 0%, #e4c7a4 58%, #c6a36c 100%);
 }
 
-.hill-canvas {
+.desert-view {
   position: absolute;
   inset: 0;
+  cursor: grab;
+  touch-action: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.desert-view.is-looking {
+  cursor: grabbing;
+}
+
+.desert-view canvas {
   display: block;
   width: 100%;
   height: 100%;
 }
 
-.hill-hop {
-  position: absolute;
-  inset: 0;
-  min-width: var(--touch);
-  min-height: var(--touch);
-  padding: 0;
-  border: 0;
-  background: transparent;
-  cursor: pointer;
-  touch-action: manipulation;
-  -webkit-user-select: none;
-  user-select: none;
-}
-
-.hill-hop:focus {
-  outline: none;
-}
-
-.hill-hop:focus-visible {
-  box-shadow: inset 0 0 0 2px rgba(255, 220, 160, 0.35);
-}
-
 .hill-marks {
   position: absolute;
-  left: max(1rem, var(--safe-left));
-  right: max(1rem, var(--safe-right));
-  bottom: max(1rem, calc(var(--safe-bottom) + 0.7rem));
+  left: max(0.85rem, var(--safe-left));
+  right: auto;
+  bottom: max(0.35rem, var(--safe-bottom));
   z-index: 2;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 0.2rem;
+  align-items: flex-start;
+  gap: 0;
+  max-width: min(14rem, calc(100% - 1.5rem));
   pointer-events: none;
-  text-align: center;
+  text-align: left;
 }
 
 .hill-marks-kicker {
   margin: 0;
-  font: 600 0.68rem/1.3 ui-sans-serif, system-ui, sans-serif;
-  letter-spacing: 0.04em;
-  color: rgba(230, 210, 180, 0.55);
+  font: 500 0.58rem/1.2 ui-sans-serif, system-ui, sans-serif;
+  letter-spacing: 0.06em;
+  color: rgba(48, 32, 18, 0.45);
 }
 
 .hill-marks-list {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.15rem 0.85rem;
+  justify-content: flex-start;
+  gap: 0.1rem 0.6rem;
+  margin-top: -0.15rem;
 }
 
 .hill-mark {
   pointer-events: auto;
   display: inline-flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   min-height: var(--touch);
   min-width: var(--touch);
   padding: 0 0.15rem;
-  font: 500 0.92rem/1.2 "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
-  color: #f0d9a8;
-  text-decoration: underline;
-  text-underline-offset: 0.2em;
+  font: 500 0.74rem/1.2 "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  color: rgba(48, 32, 18, 0.52);
+  touch-action: manipulation;
+  text-decoration: none;
+  text-underline-offset: 0.18em;
   text-decoration-thickness: 1px;
-  text-decoration-color: rgba(240, 217, 168, 0.45);
+  text-decoration-color: transparent;
+  transition: color 160ms ease, text-decoration-color 160ms ease;
 }
 
 .hill-mark:hover,
 .hill-mark:focus-visible {
-  color: #fff6dc;
-  text-decoration-color: #fff6dc;
+  color: rgba(22, 12, 6, 0.94);
+  text-decoration: underline;
+  text-decoration-color: rgba(22, 12, 6, 0.45);
 }
 
 .hill-mark:focus {
@@ -128,20 +123,22 @@ body {
 }
 
 .hill-mark:focus-visible {
-  outline: 2px solid rgba(255, 220, 160, 0.45);
+  outline: 2px solid rgba(48, 32, 18, 0.55);
   outline-offset: 3px;
 }
 
 @media (max-width: 640px) {
-  .hill-hop {
-    min-height: 100dvh;
-  }
-
   .hill-marks-kicker {
-    font-size: 0.64rem;
+    font-size: 0.54rem;
   }
 
   .hill-mark {
-    font-size: 0.9rem;
+    font-size: 0.68rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hill-mark {
+    transition: none;
   }
 }
