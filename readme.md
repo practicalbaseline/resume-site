@@ -2,7 +2,7 @@
 
 Personal resume for **Jake Gray** — projects, principles, library, and writing.
 
-**https://www.itsjakegray.com**
+**https://itsjakegray.com**
 
 ## Develop
 
@@ -18,7 +18,16 @@ npm run build
 npm run preview
 ```
 
-Static output lands in `dist/` (includes `CNAME` + `.nojekyll` from `public/`).
+`npm run build` runs `tsc`, then Vite. Static output lands in `dist/`.
+
+## Deploy
+
+Production is the Vercel project `resume-site` (Vite, Node.js 24), linked to this repo.
+
+- https://itsjakegray.com is the live site
+- https://www.itsjakegray.com redirects to that apex with a 301
+
+A merge to `main` deploys production. A pull request gets a preview deployment. Vercel runs `npm run build` and publishes `dist/`.
 
 ## Test
 
@@ -42,4 +51,4 @@ Edit `src/data/graph.ts`. Four trunks:
 
 - Vite + TypeScript
 - Static HTML rendered from a typed content model
-- GitHub Pages via `dist/`
+- Vercel
