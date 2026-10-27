@@ -22,12 +22,12 @@ npm run preview
 
 ## Deploy
 
-Production is the Vercel project `resume-site` (Vite, Node.js 24).
+Production is the Vercel project `resume-site` (Vite, Node.js 24), linked to this repo.
 
 - https://itsjakegray.com is the live site
 - https://www.itsjakegray.com redirects to that apex with a 301
 
-Vercel publishes the `dist/` build. Hosting is configured in Vercel, not in this repo.
+A merge to `main` deploys production. A pull request gets a preview deployment. Vercel runs `npm run build` and publishes `dist/`.
 
 ## Test
 
