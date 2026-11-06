@@ -1,0 +1,11 @@
+User-agent: *
+Disallow: /resume-images/
+
+User-agent: Googlebot-Image
+Disallow: /resume-images/
+
+User-agent: ia_archiver
+Disallow: /resume-images/
+
+User-agent: archive.org_bot
+Disallow: /resume-images/

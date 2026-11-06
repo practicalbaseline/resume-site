@@ -1,0 +1,13 @@
+{
+  "headers": [
+    {
+      "source": "/resume-images/(.*)",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, noarchive, nosnippet"
+        }
+      ]
+    }
+  ]
+}
