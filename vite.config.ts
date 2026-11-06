@@ -1,6 +1,6 @@
 import { defineConfig } from "vite";
 
-// GitHub Pages custom domain (itsjakegray.com) serves from site root.
+// itsjakegray.com is served from the site root on Vercel.
 export default defineConfig({
   base: "/",
   publicDir: "public",
